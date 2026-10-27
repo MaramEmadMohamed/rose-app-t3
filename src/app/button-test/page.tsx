@@ -3,8 +3,12 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function ButtonTestPage() {
+  const [checked, setChecked] = useState(true);
+  const [darkChecked, setDarkChecked] = useState(true);
+  const [errorChecked, setErrorChecked] = useState(false);
   const [loading, setLoading] = useState(false);
 
   function handleClick() {
@@ -342,6 +346,82 @@ export default function ButtonTestPage() {
       <p className="text-sm text-neutral-500">
         جرّب المرور بالمؤشر فوق الزر، ثم اختبر التعطيل والتحميل.
       </p>
+
+      {/* Checkbox - Light Mode */}
+      <section className="w-full max-w-md space-y-4 rounded-xl border bg-white p-6 text-[#27272A]">
+        <h2 className="text-lg font-semibold">Checkbox - Light Mode</h2>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox />
+          <span>Default Checkbox</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox
+            checked={checked}
+            onCheckedChange={(value) => setChecked(value === true)}
+          />
+          <span>Checked Checkbox</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox className="focus-visible:ring-2" />
+          <span>Focus Checkbox (use Tab)</span>
+        </label>
+
+        <div className="space-y-1">
+          <label className="flex items-center gap-2.5">
+            <Checkbox
+              checked={errorChecked}
+              onCheckedChange={(value) => setErrorChecked(value === true)}
+              aria-invalid="true"
+            />
+            <span>Error Checkbox</span>
+          </label>
+
+          <p className="text-sm text-[#DC2626]">
+            You must accept terms and conditions
+          </p>
+        </div>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox disabled />
+          <span>Disabled Checkbox</span>
+        </label>
+      </section>
+
+      {/* Checkbox - Dark Mode */}
+      <section className="dark w-full max-w-md space-y-4 rounded-xl bg-[#27272A] p-6 text-white">
+        <h2 className="text-lg font-semibold">Checkbox - Dark Mode</h2>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox />
+          <span>Default Checkbox</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox
+            checked={darkChecked}
+            onCheckedChange={(value) => setDarkChecked(value === true)}
+          />
+          <span>Checked Checkbox</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox className="focus-visible:ring-2" />
+          <span>Focus Checkbox (use Tab)</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox aria-invalid="true" />
+          <span className="text-[#DC2626]">Error Checkbox</span>
+        </label>
+
+        <label className="flex items-center gap-2.5">
+          <Checkbox disabled />
+          <span>Disabled Checkbox</span>
+        </label>
+      </section>
     </main>
   );
 }
