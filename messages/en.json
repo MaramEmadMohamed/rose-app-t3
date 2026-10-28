@@ -1,0 +1,21 @@
+{
+  "common": {
+    "theme": {
+      "light": "Light Mode",
+      "dark": "Dark Mode",
+      "system": "System Mode"
+    },
+    "locale": {
+      "en": "English",
+      "ar": "Arabic"
+    }
+  }
+,
+  
+  "HomePage": {
+    "title": "Welcome to Rose App",
+    "description": "Discover our beautiful collection of fresh roses."
+
+  }
+}
+
