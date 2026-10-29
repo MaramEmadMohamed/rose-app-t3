@@ -12,7 +12,8 @@ import {
   PaginationLast,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
-
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export default function Home() {
   return (
@@ -25,6 +26,16 @@ export default function Home() {
             <TabsTrigger value="analytics">Inactive</TabsTrigger>
           </TabsList>
         </Tabs>
+      </div>
+      {/* textarea */}
+      <div className="my-4 w-[327.2px] h-37.5">
+        <Field>
+          <FieldLabel htmlFor="textarea-message">Label</FieldLabel>
+          <Textarea
+            id="textarea-message"
+            placeholder="Type your message here."
+          />
+        </Field>
       </div>
       {/* pagination */}
       <div className="p-6 bg-amber-300">
