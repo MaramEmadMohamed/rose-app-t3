@@ -40,7 +40,7 @@ export default async function LocaleLayout({
       className={`${sarabun.variable} ${tajawal.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"

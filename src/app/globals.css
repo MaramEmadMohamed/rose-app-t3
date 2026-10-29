@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -199,7 +198,6 @@
   --zinc-950: #09090b;
 }
 
-
 :root {
   --radius: 0.5rem;
 
@@ -313,7 +311,11 @@
   --primary-fade: color-mix(in srgb, var(--soft-pink-300) 25%, transparent);
 
   --info: var(--blue-500);
-  --info-faint: color-mix(in srgb, var(--blue-500) 50%, transparent); /* Figma label says blue-900, confirm with design */
+  --info-faint: color-mix(
+    in srgb,
+    var(--blue-500) 50%,
+    transparent
+  ); /* Figma label says blue-900, confirm with design */
   --info-fade: color-mix(in srgb, var(--blue-500) 25%, transparent);
 
   --secondary: var(--maroon-600);
@@ -326,12 +328,20 @@
 
   --warning: var(--yellow-500);
   --warning-faint: color-mix(in srgb, var(--yellow-500) 50%, transparent);
-  --warning-fade: color-mix(in srgb, var(--yellow-500) 25%, transparent); /* Figma label says yellow-50/25, confirm with design */
+  --warning-fade: color-mix(
+    in srgb,
+    var(--yellow-500) 25%,
+    transparent
+  ); /* Figma label says yellow-50/25, confirm with design */
 
   --danger: var(--red-500);
   --danger-saturated: var(--red-400);
   --danger-faint: color-mix(in srgb, var(--red-500) 50%, transparent);
-  --danger-fade: color-mix(in srgb, var(--red-500) 25%, transparent); /* Figma label says red-50/25, confirm with design */
+  --danger-fade: color-mix(
+    in srgb,
+    var(--red-500) 25%,
+    transparent
+  ); /* Figma label says red-50/25, confirm with design */
 
   /* Ring (hex values come straight from Figma) */
   --ring-default: #473036;
