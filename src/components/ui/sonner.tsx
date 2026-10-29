@@ -1,13 +1,12 @@
+
 "use client";
 
 import { useTheme } from "next-themes";
-import { Toaster as Sonner, toast, type ToasterProps } from "sonner";
+import { Toaster as Sonner, type ToasterProps } from "sonner";
 import {
   Check,
-  InfoIcon,
-  OctagonXIcon,
+  Info,
   X,
-  XIcon,
 } from "lucide-react";
 
 const Toaster = ({ ...props }: ToasterProps) => {
@@ -16,41 +15,51 @@ const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
-      className="toaster group "
+      className="toaster group"
+      closeButton
       icons={{
         success: (
-          <div>
-            <Check className="size-5 text-emerald-600 " />
-            {/* <button
-            type="button"
-            onClick={() => toast.dismiss()}
-            aria-label="Close notification"
-            className="  rounded-md  py-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
-          >
-            <X className="size-4 absolute top-0 left-0" />
-          </button> */}
-          </div>
+          <Check className="size-5 shrink-0 text-emerald-500 stroke-2" />
         ),
         info: (
-          <InfoIcon className="size-5 text-neutral-700 " />
+          <Info className="size-5 shrink-0 text-neutral-700 dark:text-neutral-300" />
         ),
-        error: <XIcon className="size-5 text-rose-600" />,
+        error: (
+          <X className="size-5 shrink-0 text-red-500 stroke-2" />
+        ),
       }}
       style={
         {
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",
           "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
+          "--border-radius": "10px",
         } as React.CSSProperties
       }
-    
       toastOptions={{
         classNames: {
-          toast: "group toast group-[.toaster]:shadow-sm group-[.toaster]:rounded-2xl group-[.toaster]:p-4 group-[.toaster]:font-sans",
-          info: "bg-#f4f4f5! text-black! border-rgba(212, 212, 216, 1)! dark:bg-#18181b! ",
-          success: "bg-emerald-50!  text-black! border-rgba(212, 212, 216, 1)!  dark:bg-emerald-500! dark:text-white! ",
-          error: "bg-#fef2f2! text-black! border-rgba(212, 212, 216, 1)! dark:bg-#431819! ",
+          toast:
+            "group toast !flex !items-center !gap-3 !rounded-[10px] !border !px-3.5 !py-3 !font-sans !shadow-[0_2px_8px_rgba(0,0,0,0.10)]",
+
+          icon: "!flex !shrink-0 !items-center !justify-center",
+
+          content: "!flex-1 !min-w-0",
+
+          title: "!text-sm !font-medium",
+
+          description: "!text-sm",
+
+          closeButton:
+            "!absolute  !right-3 !left-auto !top-1/2 !-translate-y-1/2 !rounded-full !border-0 !bg-transparent !p-1 !text-neutral-500 hover:!bg-black/5 dark:!text-neutral-400 dark:hover:!bg-white/10",
+
+          info:
+            "!border-neutral-200 !bg-[#f4f4f5] !text-neutral-900 dark:!border-zinc-800 dark:!bg-[#18181b] dark:!text-white",
+
+          success:
+            "!border-emerald-100 !bg-[#ecfdf5] !text-neutral-900 dark:!border-emerald-950 !bg-[#064e3b] !text-emerald-50",
+
+          error:
+            "!border-red-100 !bg-[#fef2f2] !text-neutral-900 dark:!border-red-950 dark:!bg-[#451a1a] dark:!text-red-50",
         },
       }}
       {...props}
@@ -59,4 +68,3 @@ const Toaster = ({ ...props }: ToasterProps) => {
 };
 
 export { Toaster };
-
