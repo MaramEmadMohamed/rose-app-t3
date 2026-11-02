@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { OTPInput, OTPInputContext } from "input-otp";
+import { OTPInput, OTPInputContext, REGEXP_ONLY_DIGITS } from "input-otp";
 
+import { inputVariants } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 function InputOTP({
@@ -35,11 +36,19 @@ function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
+type InputOTPSlotProps = React.ComponentProps<"div"> & {
+  index: number;
+  invalid?: boolean;
+  disabled?: boolean;
+};
+
 function InputOTPSlot({
   index,
+  invalid,
+  disabled,
   className,
   ...props
-}: React.ComponentProps<"div"> & { index: number }) {
+}: InputOTPSlotProps) {
   const inputOTPContext = React.useContext(OTPInputContext);
   const { char, hasFakeCaret, isActive } = inputOTPContext?.slots[index] ?? {};
 
@@ -47,14 +56,9 @@ function InputOTPSlot({
     <div
       data-slot="input-otp-slot"
       data-active={isActive}
-      className={cn(
-        "relative flex size-[45px] items-center justify-center rounded-[10px] border",
-        "border-line-soft bg-surface text-base leading-none text-text-plain",
-        "transition-[border-color,box-shadow]",
-        "hover:border-line-default hover:ring-[3px] hover:ring-ring-default",
-        "data-[active=true]:border-line-primary data-[active=true]:ring-[3px] data-[active=true]:ring-ring-default",
-        className,
-      )}
+      data-invalid={invalid}
+      data-disabled={disabled}
+      className={cn(inputVariants({ shape: "cell" }), "relative", className)}
       {...props}
     >
       {char}
@@ -75,12 +79,14 @@ type OtpInputProps = {
   length?: number;
   value?: string;
   onChange?: (value: string) => void;
+  onComplete?: (value: string) => void;
   disabled?: boolean;
   invalid?: boolean;
   id?: string;
   className?: string;
 };
 
+// Design system component: use this one in pages
 function OtpInput({
   length = 6,
   disabled,
@@ -89,32 +95,25 @@ function OtpInput({
   ...props
 }: OtpInputProps) {
   return (
-    <div
-      data-slot="otp-input"
-      data-invalid={invalid || undefined}
-      data-disabled={disabled || undefined}
-      className={cn(
-        // error
-        "data-[invalid]:[&_[data-slot=input-otp-slot]]:border-line-danger",
-        "data-[invalid]:[&_[data-slot=input-otp-slot]]:ring-[3px]",
-        "data-[invalid]:[&_[data-slot=input-otp-slot]]:ring-ring-danger",
-        // disabled
-        "data-[disabled]:pointer-events-none",
-        "data-[disabled]:[&_[data-slot=input-otp-slot]]:border-transparent",
-        "data-[disabled]:[&_[data-slot=input-otp-slot]]:bg-surface-muted",
-        "data-[disabled]:[&_[data-slot=input-otp-slot]]:text-text-muted",
-        "data-[disabled]:[&_[data-slot=input-otp-slot]]:ring-0",
-        className,
-      )}
+    <InputOTP
+      {...props}
+      maxLength={length}
+      pattern={REGEXP_ONLY_DIGITS}
+      disabled={disabled}
+      aria-invalid={invalid}
+      containerClassName={className}
     >
-      <InputOTP maxLength={length} disabled={disabled} {...props}>
-        <InputOTPGroup>
-          {Array.from({ length }).map((_, i) => (
-            <InputOTPSlot key={i} index={i} />
-          ))}
-        </InputOTPGroup>
-      </InputOTP>
-    </div>
+      <InputOTPGroup>
+        {Array.from({ length }, (_, index) => (
+          <InputOTPSlot
+            key={index}
+            index={index}
+            invalid={invalid}
+            disabled={disabled}
+          />
+        ))}
+      </InputOTPGroup>
+    </InputOTP>
   );
 }
 

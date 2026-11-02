@@ -1,148 +1,131 @@
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { notFound } from "next/navigation";
+
 import { Field } from "@/components/ui/field";
-import { SearchInput } from "@/components/ui/search-input";
-import { FileInput } from "@/components/ui/file-input";
-import { PhoneInput } from "@/components/ui/phone-input";
-import React from "react";
-import { PasswordInput } from "@/components/ui/password-input";
+import { Input } from "@/components/ui/input";
 import { OtpInput } from "@/components/ui/input-otp";
-function InputInstances() {
-  const [phone, setPhone] = React.useState<string | undefined>();
-  const [code, setCode] = React.useState("");
-  const [dark, setDark] = React.useState(false);
-  React.useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-  }, [dark]);
+import { Label } from "@/components/ui/label";
+
+// Dev-only strings: replace with translations once messages exist
+const DEV_LABELS = {
+  upload: "Upload file",
+  review: "Review current image(s)",
+  clear: "Clear search",
+  showPassword: "Show password",
+  hidePassword: "Hide password",
+  increase: "Increase",
+  decrease: "Decrease",
+  country: "Country",
+  searchCountry: "Search country",
+  noCountry: "No country found",
+};
+
+function InputShowcase({ mode }: { mode: string }) {
+  const id = (name: string) => `${mode}-${name}`;
+
   return (
-    <main className="mx-auto grid max-w-sm gap-6 p-10">
-      <button
-        type="button"
-        onClick={() => setDark((d) => !d)}
-        className="rounded-lg border px-3 py-2 text-sm"
-      >
-        Mode: {dark ? "Dark" : "Light"}
-      </button>
+    <div className="grid max-w-sm gap-5">
       <Field>
-        <Label htmlFor="a">Default</Label>
-        <Input id="a" placeholder="Placeholder" />
-      </Field>
-
-      <Field>
-        <Label htmlFor="b">Filled</Label>
-        <Input id="b" defaultValue="Input text" />
-      </Field>
-
-      <Field invalid>
-        <Label htmlFor="c">Error</Label>
-        <Input id="c" placeholder="Placeholder" aria-invalid />
-      </Field>
-
-      <Field disabled>
-        <Label htmlFor="d">Disabled</Label>
-        <Input id="d" placeholder="Placeholder" disabled />
-      </Field>
-
-      <Field>
-        <Label htmlFor="s1">Search</Label>
-        <SearchInput id="s1" placeholder="Search..." />
-      </Field>
-      <Field>
-        <Label htmlFor="s2">With text</Label>
-        <SearchInput id="s2" defaultValue="Search text" />
+        <Label htmlFor={id("text")}>Text</Label>
+        <Input id={id("text")} placeholder="Placeholder" />
       </Field>
       <Field invalid>
-        <Label htmlFor="s3">Error</Label>
-        <SearchInput id="s3" placeholder="Search..." aria-invalid />
+        <Label htmlFor={id("text-error")}>Text error</Label>
+        <Input id={id("text-error")} placeholder="Placeholder" aria-invalid />
       </Field>
       <Field disabled>
-        <Label htmlFor="s4">Disabled</Label>
-        <SearchInput id="s4" placeholder="Search..." disabled />
-      </Field>
-      <Field>
-        <Label htmlFor="n1">Number</Label>
-        <Input id="n1" type="number" placeholder="Placeholder" />
-      </Field>
-      <Field>
-        <Label htmlFor="f1">Default</Label>
-        <FileInput id="f1" />
-      </Field>
-
-      <Field invalid>
-        <Label htmlFor="f2">Error</Label>
-        <FileInput id="f2" aria-invalid />
-      </Field>
-
-      <Field disabled>
-        <Label htmlFor="f3">Disabled</Label>
-        <FileInput id="f3" disabled />
+        <Label htmlFor={id("text-disabled")}>Text disabled</Label>
+        <Input id={id("text-disabled")} placeholder="Placeholder" disabled />
       </Field>
 
       <Field>
-        <Label htmlFor="f4">Review current image</Label>
-        <FileInput
-          id="f4"
-          reviewLabel="Review current image(s)"
-          onReview={() => alert("open preview")}
-        />
-      </Field>
-      <Field>
-        <Label htmlFor="pw1">Default</Label>
-        <PasswordInput id="pw1" placeholder="Enter Your password" />
-      </Field>
-
-      <Field>
-        <Label htmlFor="pw2">Filled</Label>
-        <PasswordInput id="pw2" defaultValue="12345678" />
-      </Field>
-
-      <Field invalid>
-        <Label htmlFor="pw3">Error</Label>
-        <PasswordInput
-          id="pw3"
-          placeholder="Enter Your password"
-          aria-invalid
+        <Label htmlFor={id("number")}>Number</Label>
+        <Input
+          id={id("number")}
+          type="number"
+          placeholder="Placeholder"
+          min={0}
+          max={10}
+          increaseLabel={DEV_LABELS.increase}
+          decreaseLabel={DEV_LABELS.decrease}
         />
       </Field>
 
-      <Field disabled>
-        <Label htmlFor="pw4">Disabled</Label>
-        <PasswordInput id="pw4" placeholder="Enter Your password" disabled />
-      </Field>
-
-      <h2 className="mt-6 text-lg font-semibold">Phone</h2>
-
       <Field>
-        <Label htmlFor="ph1">Default</Label>
-        <PhoneInput id="ph1" value={phone} onChange={(v) => setPhone(v)} />
-      </Field>
-
-      <Field invalid>
-        <Label htmlFor="ph2">Error</Label>
-        <PhoneInput id="ph2" aria-invalid />
-      </Field>
-
-      <Field disabled>
-        <Label htmlFor="ph3">Disabled</Label>
-        <PhoneInput id="ph3" disabled />
+        <Label htmlFor={id("password")}>Password</Label>
+        <Input
+          id={id("password")}
+          type="password"
+          placeholder="********"
+          showPasswordLabel={DEV_LABELS.showPassword}
+          hidePasswordLabel={DEV_LABELS.hidePassword}
+        />
       </Field>
 
       <Field>
-        <Label htmlFor="otp1">Default</Label>
-        <OtpInput id="otp1" value={code} onChange={setCode} />
+        <Label htmlFor={id("search")}>Search</Label>
+        <Input
+          id={id("search")}
+          type="search"
+          placeholder="Search..."
+          clearLabel={DEV_LABELS.clear}
+        />
       </Field>
 
+      <Field>
+        <Label htmlFor={id("file")}>File</Label>
+        <Input id={id("file")} type="file" uploadLabel={DEV_LABELS.upload} />
+      </Field>
+      <Field>
+        <Label htmlFor={id("file-review")}>File with current image</Label>
+        <Input
+          id={id("file-review")}
+          type="file"
+          uploadLabel={DEV_LABELS.upload}
+          reviewLabel={DEV_LABELS.review}
+        />
+      </Field>
+
+      <Field>
+        <Label htmlFor={id("phone")}>Phone</Label>
+        <Input
+          id={id("phone")}
+          type="tel"
+          placeholder="Phone number"
+          countryLabel={DEV_LABELS.country}
+          searchCountryLabel={DEV_LABELS.searchCountry}
+          noCountryLabel={DEV_LABELS.noCountry}
+        />
+      </Field>
+
+      <Field>
+        <Label htmlFor={id("otp")}>OTP</Label>
+        <OtpInput id={id("otp")} />
+      </Field>
       <Field invalid>
-        <Label htmlFor="otp2">Error</Label>
-        <OtpInput id="otp2" invalid />
+        <Label htmlFor={id("otp-error")}>OTP error</Label>
+        <OtpInput id={id("otp-error")} invalid />
       </Field>
-
       <Field disabled>
-        <Label htmlFor="otp3">Disabled</Label>
-        <OtpInput id="otp3" disabled value="1" />
+        <Label htmlFor={id("otp-disabled")}>OTP disabled</Label>
+        <OtpInput id={id("otp-disabled")} disabled />
       </Field>
-    </main>
+    </div>
   );
 }
 
-export default InputInstances;
+export default function InputsDevPage() {
+  if (process.env.NODE_ENV === "production") notFound();
+
+  return (
+    <main className="grid lg:grid-cols-2">
+      <section className="bg-background p-8 text-foreground">
+        <h2 className="mb-6 text-lg font-semibold">Light</h2>
+        <InputShowcase mode="light" />
+      </section>
+      <section className="dark bg-background p-8 text-foreground">
+        <h2 className="mb-6 text-lg font-semibold">Dark</h2>
+        <InputShowcase mode="dark" />
+      </section>
+    </main>
+  );
+}
