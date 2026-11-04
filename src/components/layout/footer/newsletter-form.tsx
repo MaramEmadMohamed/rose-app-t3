@@ -1,40 +1,26 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
-import { ApiError } from "@/lib/api/api-client";
-import { subscribeToNewsletter } from "@/lib/api/newsletter";
-import { HTTP_STATUS } from "@/lib/constants/api";
+import { useSubscribeNewsletter } from "@/hooks/use-subscribe-newsletter";
+import {
+  newsletterSchema,
+  type NewsletterValues,
+} from "@/lib/schemas/newsletter-schema";
 import { FOCUS_RING_CLASS_NAME } from "@/lib/styles/focus-ring";
 import { cn } from "@/lib/utils";
 
-import { newsletterSchema, type NewsletterValues } from "./newsletter-schema";
-
 const EMAIL_ERROR_ID = "newsletter-email-error";
-
-function getSubscribeErrorKey(error: Error) {
-  if (error instanceof ApiError && error.status === HTTP_STATUS.CONFLICT) {
-    return "alreadySubscribed";
-  }
-
-  return "genericError";
-}
 
 export function NewsletterForm() {
   // Translation
   const t = useTranslations("Footer");
 
   // Mutation
-  const { mutate: subscribe, isPending } = useMutation({
-    mutationFn: subscribeToNewsletter,
-    onSuccess: () => toast.success(t("subscribeSuccess")),
-    onError: (error) => toast.error(t(getSubscribeErrorKey(error))),
-  });
+  const { mutate: subscribe, isPending } = useSubscribeNewsletter();
 
   // Form
   const form = useForm<NewsletterValues>({
