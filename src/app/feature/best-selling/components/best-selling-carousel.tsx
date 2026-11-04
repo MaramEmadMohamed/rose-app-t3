@@ -35,9 +35,9 @@ export default function BestSellingCarousel({ products }: Props) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="left-0  z-10 size-7 translate-x-0 border-0 bg-[#b52832] text-white shadow-md hover:bg-[#9f2029] hover:text-white disabled:opacity-60" />
+      <CarouselPrevious className="left-0 dark:bg-[#b52832] z-10 size-7   border-0 bg-[#b52832] text-white shadow-md hover:bg-[#9f2029] hover:text-white disabled:opacity-60" />
 
-      <CarouselNext className="right-0  z-10 size-7 translate-x-0 border-0 bg-[#b52832] text-white shadow-md hover:bg-[#9f2029] hover:text-white disabled:opacity-60" />
+      <CarouselNext className="right-0 dark:bg-[#b52832] z-10 size-7  border-0 bg-[#b52832] text-white shadow-md hover:bg-[#9f2029] hover:text-white disabled:opacity-60" />
     </Carousel>
   );
 }

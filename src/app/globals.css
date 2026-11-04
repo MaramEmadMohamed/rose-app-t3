@@ -130,3 +130,33 @@
     @apply font-sans;
   }
 }
+
+.testimonials-marquee {
+  display: flex;
+  width: max-content;
+  animation: testimonials-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.testimonials-marquee-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 62px;
+  padding-right: 62px;
+}
+
+@keyframes testimonials-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee {
+    animation: none;
+  }
+}
