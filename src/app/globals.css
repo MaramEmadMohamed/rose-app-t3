@@ -358,6 +358,14 @@
   --font-family: var(--font-tajawal), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Brand primitives with no semantic token: the always-dark footer and the
+   active navigation item, whose colours flip against the bar. */
+@theme inline {
+  --color-maroon-800: var(--maroon-800);
+  --color-soft-pink-200: var(--soft-pink-200);
+  --color-soft-pink-300: var(--soft-pink-300);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
