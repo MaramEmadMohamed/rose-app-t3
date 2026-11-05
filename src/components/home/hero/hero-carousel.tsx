@@ -11,7 +11,11 @@ import { cn } from "@/lib/utils";
 
 import { PHOTO_BUTTON_CLASS_NAME } from "../home-styles";
 import { ImageBackground } from "../image-background";
-import { HERO_AUTOPLAY_DELAY_MS, HERO_SLIDES } from "./hero-slides";
+import {
+  HERO_AUTOPLAY_DELAY_MS,
+  HERO_SLIDE_DURATION,
+  HERO_SLIDES,
+} from "./hero-slides";
 
 const ARROW_BUTTON_CLASS_NAME = cn(
   "flex items-center justify-center rounded-full text-maroon-700 transition-opacity hover:opacity-70",
@@ -33,6 +37,7 @@ export function HeroCarousel() {
   const [viewportRef, emblaApi] = useEmblaCarousel({
     loop: true,
     direction: locale === "ar" ? "rtl" : "ltr",
+    duration: HERO_SLIDE_DURATION,
   });
 
   // Functions

@@ -9,4 +9,8 @@ export const HERO_SLIDES = [
   },
 ] as const;
 
+// Enough time to read a slide's title and decide to click its button.
 export const HERO_AUTOPLAY_DELAY_MS = 5000;
+
+// Embla's slide speed: higher is slower and smoother (its default is 25).
+export const HERO_SLIDE_DURATION = 40;
