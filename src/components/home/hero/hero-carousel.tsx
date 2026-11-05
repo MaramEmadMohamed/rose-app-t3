@@ -148,7 +148,8 @@ export function HeroCarousel() {
         })}
       </div>
 
-      <div className="absolute end-6 bottom-6 flex items-center gap-1 rounded-full bg-secondary-fade p-1 sm:end-9 sm:bottom-9">
+      {/* On phones the dots and swiping are enough, and the arrows would cover the button. */}
+      <div className="absolute end-9 bottom-9 hidden items-center gap-1 rounded-full bg-secondary-fade p-1 sm:flex">
         <button
           type="button"
           onClick={() => emblaApi?.scrollPrev()}

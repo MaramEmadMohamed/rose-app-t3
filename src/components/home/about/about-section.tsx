@@ -27,7 +27,7 @@ export function AboutSection() {
         <div className="relative">
           <div
             aria-hidden="true"
-            className="absolute -inset-2 rounded-[5rem] border-2 border-primary-saturated"
+            className="absolute -start-3 -top-3 end-3 bottom-3 rounded-[4.5rem] border-2 border-primary-saturated"
           />
           <Image
             src="/images/home/about-gift.jpg"
