@@ -36,22 +36,22 @@ import { cn } from "@/lib/utils";
 
 const inputVariants = cva(
   [
-    "group/box flex items-center border text-text-plain outline-none transition-[border-color,box-shadow]",
-    "hover:border-line-default hover:ring-(length:--field-ring-width) hover:ring-ring-default",
-    "focus-within:border-line-primary focus-within:ring-(length:--field-ring-width) focus-within:ring-ring-default",
-    "data-[active=true]:border-line-primary data-[active=true]:ring-(length:--field-ring-width) data-[active=true]:ring-ring-default",
-    "data-[invalid=true]:border-line-danger data-[invalid=true]:ring-(length:--field-ring-width) data-[invalid=true]:ring-ring-danger",
-    "data-[disabled=true]:pointer-events-none data-[disabled=true]:border-transparent data-[disabled=true]:bg-surface-muted data-[disabled=true]:text-text-muted data-[disabled=true]:ring-0",
+    "group/box flex items-center border text-plain outline-none transition-[border-color,box-shadow]",
+    "hover:border-default hover:ring-3 hover:ring-focus",
+    "focus-within:border-primary focus-within:ring-3 focus-within:ring-focus",
+    "data-[active=true]:border-primary data-[active=true]:ring-3 data-[active=true]:ring-focus",
+    "data-[invalid=true]:border-danger data-[invalid=true]:ring-3 data-[invalid=true]:ring-focus-danger",
+    "data-[disabled=true]:pointer-events-none data-[disabled=true]:border-transparent data-[disabled=true]:bg-muted data-[disabled=true]:text-muted data-[disabled=true]:ring-0",
   ],
   {
     variants: {
       variant: {
-        outline: "border-line-soft bg-surface",
+        outline: "border-soft bg-plain",
       },
       shape: {
         field:
           "h-(--field-height) w-full gap-2 rounded-lg px-(--field-padding-x) text-sm leading-none",
-        cell: "size-(--otp-slot-size) justify-center rounded-otp text-base leading-none",
+        cell: "size-(--otp-slot-size) justify-center rounded-xl text-base leading-none",
       },
     },
     defaultVariants: {
@@ -62,7 +62,7 @@ const inputVariants = cva(
 );
 
 const controlClassName =
-  "min-w-0 flex-1 bg-transparent outline-none placeholder:text-text-muted";
+  "min-w-0 flex-1 bg-transparent outline-none placeholder:text-muted";
 
 const hideNativeSpinner =
   "[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none";
@@ -221,7 +221,7 @@ function StepButton({ label, direction, disabled, onStep }: StepButtonProps) {
       aria-label={label}
       disabled={disabled}
       onClick={() => onStep(direction)}
-      className="flex h-2.5 items-center text-text-muted hover:text-text-default disabled:pointer-events-none"
+      className="flex h-2.5 items-center text-muted hover:text-default disabled:pointer-events-none"
     >
       <Icon className="size-2.5" aria-hidden />
     </button>
@@ -316,7 +316,7 @@ function PasswordField({
         disabled={disabled}
         aria-label={isVisible ? hidePasswordLabel : showPasswordLabel}
         onClick={() => setIsVisible((previous) => !previous)}
-        className="shrink-0 text-text-muted hover:text-text-default"
+        className="shrink-0 text-muted hover:text-default"
       >
         <ToggleIcon className="size-5" aria-hidden />
       </button>
@@ -371,11 +371,11 @@ function SearchField({
       invalid={isInvalid}
       data-filled={isFilled}
       className={cn(
-        "data-[filled=true]:border-line-primary data-[filled=true]:text-base",
+        "data-[filled=true]:border-primary data-[filled=true]:text-base",
         className,
       )}
     >
-      <Search className="size-4.5 shrink-0 text-text-muted" aria-hidden />
+      <Search className="size-4.5 shrink-0 text-muted" aria-hidden />
       <input
         {...props}
         ref={mergeRefs(inputRef, ref)}
@@ -393,7 +393,7 @@ function SearchField({
           type="button"
           aria-label={clearLabel}
           onClick={handleClear}
-          className="shrink-0 text-text-muted hover:text-text-default"
+          className="shrink-0 text-muted hover:text-default"
         >
           <X className="size-4" aria-hidden />
         </button>
@@ -454,7 +454,7 @@ function FileField({
         <button
           type="button"
           onClick={handleReview}
-          className="flex items-center gap-1.5 text-xs text-text-info"
+          className="flex items-center gap-1.5 text-xs text-info"
         >
           <ImageIcon className="size-4 shrink-0" aria-hidden />
           {reviewLabel}
@@ -462,7 +462,7 @@ function FileField({
       ) : (
         <span className="min-w-0 flex-1 truncate text-xs">{fileNames}</span>
       )}
-      <span className="flex shrink-0 items-center gap-1.5 text-text-primary group-data-[disabled=true]/box:text-text-muted">
+      <span className="flex shrink-0 items-center gap-1.5 text-primary group-data-[disabled=true]/box:text-muted">
         <Upload className="size-4.5" aria-hidden />
         {uploadLabel}
       </span>
@@ -504,7 +504,7 @@ function PhoneFlag({ country }: { country?: RPNInput.Country }) {
   const Flag = country ? flags[country] : undefined;
 
   return (
-    <span className="flex size-5 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-muted [&_svg]:h-full [&_svg]:w-auto [&_svg]:max-w-none">
+    <span className="flex size-5 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted [&_svg]:h-full [&_svg]:w-auto [&_svg]:max-w-none">
       {Flag && <Flag title={country ?? ""} />}
     </span>
   );
@@ -540,9 +540,9 @@ function PhoneCountrySelect({
       >
         <PhoneFlag country={value} />
         {value && (
-          <span className="flex items-center gap-1 font-medium group-data-[disabled=true]/box:text-text-muted">
+          <span className="flex items-center gap-1 font-medium group-data-[disabled=true]/box:text-muted">
             {value}(+{RPNInput.getCountryCallingCode(value)})
-            <ChevronsUpDown className="size-3.5 text-text-muted" aria-hidden />
+            <ChevronsUpDown className="size-3.5 text-muted" aria-hidden />
           </span>
         )}
       </PopoverTrigger>
