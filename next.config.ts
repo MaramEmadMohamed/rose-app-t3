@@ -1,7 +1,27 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+if (!apiBaseUrl) {
+  throw new Error(
+    "NEXT_PUBLIC_API_BASE_URL is missing. Copy .env.example to .env.local and set it.",
+  );
+}
+
+// Product images come from the API server, so next/image must allow its host.
+const apiUrl = new URL(apiBaseUrl);
+
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: apiUrl.hostname,
+        pathname: "/storage/**",
+      },
+    ],
+  },
   turbopack: {
     rules: {
       "*.css": {

@@ -44,7 +44,15 @@
     "wishlist": "المفضلة",
     "cart": "سلة التسوق",
     "switchLanguage": "English",
-    "mainNavigation": "التنقل الرئيسي"
+    "mainNavigation": "التنقل الرئيسي",
+    "searchClear": "مسح البحث",
+    "searchSuggestionsTitle": "منتجات قد تعجبك:",
+    "searchLoading": "جارٍ البحث...",
+    "searchError": "تعذّر تحميل المنتجات، حاول مرة أخرى.",
+    "searchNoResults": "لا توجد منتجات تطابق «{searchTerm}»",
+    "searchRating": "التقييم: {rating}/5",
+    "searchRatingsCount": "({count, plural, zero {لا توجد تقييمات} one {تقييم واحد} two {تقييمان} few {# تقييمات} many {# تقييمًا} other {# تقييم}})",
+    "currency": "ج.م"
   },
 
   "Notifications": {
@@ -92,5 +100,33 @@
     "genericError": "حدث خطأ ما، حاول مرة أخرى.",
     "emailRequired": "من فضلك أدخل بريدك الإلكتروني",
     "emailInvalid": "من فضلك أدخل بريدًا إلكترونيًا صحيحًا"
+  },
+
+  "Hero": {
+    "carouselLabel": "هدايا مميزة",
+    "slidePosition": "{current} من {total}",
+    "goToSlide": "اذهب إلى الشريحة {number}",
+    "previousSlide": "الشريحة السابقة",
+    "nextSlide": "الشريحة التالية",
+    "flowersTitle": "قلها بالورود",
+    "flowersSubtitle": "هدايا أنيقة لكل لحظة مميزة.",
+    "flowersAction": "أريد الشراء!",
+    "chocolatesTitle": "حلِّ كل لحظة",
+    "chocolatesSubtitle": "شوكولاتة فاخرة مغلفة بالحب.",
+    "chocolatesAction": "تسوق الآن",
+    "cardBadge": "تبدأ من 10.99 ج.م",
+    "cardTitle": "هدايا مميزة لمن تحب",
+    "cardAction": "تسوق الآن"
+  },
+
+  "About": {
+    "label": "من نحن",
+    "title": "نقدّم <highlight>أرقى</highlight> صناديق الهدايا للحظاتك <highlight>المميزة</highlight>",
+    "description": "اجعل كل لحظة لا تُنسى مع صناديق الهدايا الفاخرة لدينا. كل صندوق مختار بعناية ومغلف بشكل أنيق، ومليء بقطع منتقاة لتُبهر من تحب. سواء كانت لعيد ميلاد أو حفل زفاف أو مجرد «شكرًا»، صُممت صناديقنا لتترك أثرًا يدوم، لأن الهدية المدروسة تبدأ من هنا.",
+    "action": "اكتشف",
+    "featurePrices": "أسعار تنافسية وتسوق سهل",
+    "featureQuality": "جودة عالية وتغليف أنيق",
+    "featureOccasions": "مناسبة لكل المناسبات",
+    "featureDelivery": "توصيل سريع وموثوق"
   }
 }

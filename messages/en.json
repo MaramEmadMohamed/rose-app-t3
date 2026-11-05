@@ -44,7 +44,15 @@
     "wishlist": "Wishlist",
     "cart": "Cart",
     "switchLanguage": "العربية",
-    "mainNavigation": "Main navigation"
+    "mainNavigation": "Main navigation",
+    "searchClear": "Clear search",
+    "searchSuggestionsTitle": "Products you may like:",
+    "searchLoading": "Searching...",
+    "searchError": "Couldn't load products. Please try again.",
+    "searchNoResults": "No products match “{searchTerm}”",
+    "searchRating": "Rating: {rating}/5",
+    "searchRatingsCount": "({count, plural, one {# rating} other {# ratings}})",
+    "currency": "EGP"
   },
 
   "Notifications": {
@@ -92,5 +100,33 @@
     "genericError": "Something went wrong. Please try again.",
     "emailRequired": "Please enter your email",
     "emailInvalid": "Please enter a valid email address"
+  },
+
+  "Hero": {
+    "carouselLabel": "Featured gifts",
+    "slidePosition": "{current} of {total}",
+    "goToSlide": "Go to slide {number}",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "flowersTitle": "Say It with Flowers",
+    "flowersSubtitle": "Elegant gifts for every special moment.",
+    "flowersAction": "I'm buying!",
+    "chocolatesTitle": "Sweeten Every Moment",
+    "chocolatesSubtitle": "Fine chocolates wrapped with love.",
+    "chocolatesAction": "Shop Now",
+    "cardBadge": "Starting from 10.99 EGP",
+    "cardTitle": "Special Gifts For The People You Love",
+    "cardAction": "Shop Now"
+  },
+
+  "About": {
+    "label": "About",
+    "title": "Delivering the <highlight>Finest</highlight> Gift Boxes for Your <highlight>Special</highlight> Moments",
+    "description": "Make every moment memorable with our premium gift boxes. Carefully curated and beautifully packaged, each box is filled with handpicked items designed to impress. Whether it's for a birthday, wedding, or a simple “thank you,” our gift boxes are crafted to leave a lasting impression — because thoughtful gifting starts here.",
+    "action": "Discover",
+    "featurePrices": "Competitive Prices & Easy Shopping",
+    "featureQuality": "Premium Quality & Elegant Packaging",
+    "featureOccasions": "Perfect for Every Occasion",
+    "featureDelivery": "Fast & Reliable Delivery"
   }
 }
