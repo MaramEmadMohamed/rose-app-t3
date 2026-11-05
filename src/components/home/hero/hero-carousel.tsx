@@ -4,7 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState, type FocusEvent } from "react";
+import { useEffect, useState } from "react";
 
 import { Link } from "@/i18n/navigation";
 import { FOCUS_RING_CLASS_NAME } from "@/lib/styles/focus-ring";
@@ -33,17 +33,13 @@ export function HeroCarousel() {
   });
 
   // Functions
+  // The slides stay still while the mouse or the keyboard focus is on them.
   function pauseAutoplay() {
     setIsPaused(true);
   }
 
   function resumeAutoplay() {
     setIsPaused(false);
-  }
-
-  // Keep the slides still while a keyboard user is inside the carousel.
-  function handleBlur(event: FocusEvent<HTMLElement>) {
-    if (!event.currentTarget.contains(event.relatedTarget)) resumeAutoplay();
   }
 
   // Effects
@@ -80,7 +76,7 @@ export function HeroCarousel() {
       onMouseEnter={pauseAutoplay}
       onMouseLeave={resumeAutoplay}
       onFocus={pauseAutoplay}
-      onBlur={handleBlur}
+      onBlur={resumeAutoplay}
       className="relative h-110 overflow-hidden rounded-2xl bg-primary"
     >
       <div ref={viewportRef} className="h-full overflow-hidden">

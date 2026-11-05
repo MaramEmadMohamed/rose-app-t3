@@ -9,7 +9,5 @@ export const HERO_SLIDES = [
   },
 ] as const;
 
-export type HeroSlide = (typeof HERO_SLIDES)[number];
-
 // How long each slide stays before the carousel moves on by itself.
 export const HERO_AUTOPLAY_DELAY_MS = 5000;
