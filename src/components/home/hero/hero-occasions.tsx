@@ -26,16 +26,17 @@ export function HeroOccasions() {
           <Link
             href="/products"
             className={cn(
-              "relative isolate flex h-67.5 flex-col justify-end gap-2 overflow-hidden rounded-2xl bg-primary p-5 text-white",
+              "relative isolate flex h-67.75 flex-col justify-end gap-2.5 overflow-hidden rounded-2xl bg-maroon-700 p-6 text-white",
               FOCUS_RING_CLASS_NAME,
             )}
           >
             <ImageBackground
               src={occasion.image}
               sizes="(min-width: 768px) 410px, 100vw"
+              overlayClassName="bg-linear-to-b from-transparent to-black/50"
             />
             <ImageBadge>{t(`${occasion.id}Label`)}</ImageBadge>
-            <h3 className="text-xl leading-tight font-semibold">
+            <h3 className="text-2xl leading-none font-semibold">
               {t(`${occasion.id}Title`)}
             </h3>
           </Link>

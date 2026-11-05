@@ -21,7 +21,10 @@ export function HighlightedText({ text, highlight }: HighlightedTextProps) {
 
   return parts.map((part, index) =>
     index % 2 === 1 ? (
-      <mark key={index} className="bg-transparent text-primary-saturated">
+      <mark
+        key={index}
+        className="bg-transparent text-maroon-600 dark:text-soft-pink-200"
+      >
         {part}
       </mark>
     ) : (

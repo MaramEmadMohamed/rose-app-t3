@@ -15,17 +15,22 @@ export function HeroFeatures() {
   const t = useTranslations("Hero");
 
   return (
-    <ul className="grid gap-6 rounded-2xl bg-primary-fade p-6 sm:grid-cols-2 sm:p-10 lg:grid-cols-4">
+    <ul className="grid gap-6 rounded-2xl bg-maroon-50 p-6 sm:grid-cols-2 sm:p-10 lg:grid-cols-4 dark:bg-zinc-700">
       {FEATURES.map(({ id, icon: Icon }) => (
-        <li key={id} className="flex items-center gap-3">
-          <span className="flex size-16 shrink-0 items-center justify-center rounded-full bg-primary-saturated text-inverse">
-            <Icon aria-hidden="true" className="size-7" />
+        <li key={id} className="flex items-center gap-4">
+          <span className="flex size-16.25 shrink-0 items-center justify-center rounded-full bg-maroon-600 text-white dark:bg-soft-pink-200 dark:text-zinc-800">
+            <Icon
+              aria-hidden="true"
+              strokeWidth={1.46}
+              absoluteStrokeWidth
+              className="size-10"
+            />
           </span>
-          <div>
-            <p className="text-lg font-semibold text-primary-saturated">
+          <div className="flex flex-col gap-1.25">
+            <p className="text-xl leading-none font-semibold text-maroon-600 dark:text-soft-pink-200">
               {t(`${id}Title`)}
             </p>
-            <p className="text-sm text-soft">{t(`${id}Text`)}</p>
+            <p className="text-sm leading-none text-soft">{t(`${id}Text`)}</p>
           </div>
         </li>
       ))}

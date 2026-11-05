@@ -33,7 +33,7 @@ export function SearchResultItem({
       <Link
         href={`/products/${product.id}`}
         onClick={onSelect}
-        className="flex items-center gap-4 rounded-xl p-2.5 outline-none hover:bg-subtle focus-visible:bg-subtle focus-visible:ring-3 focus-visible:ring-focus"
+        className="flex items-center gap-4 border-b border-subtle p-2.5 outline-none hover:bg-subtle focus-visible:bg-subtle focus-visible:ring-3 focus-visible:ring-focus focus-visible:ring-inset"
       >
         <Image
           src={product.cover}
@@ -43,23 +43,28 @@ export function SearchResultItem({
           className="size-16 shrink-0 rounded-lg object-cover sm:size-20"
         />
 
-        <div className="flex min-w-0 flex-1 flex-col gap-1 text-plain">
-          <p className="truncate text-sm font-semibold">
+        <div className="flex min-w-0 flex-1 flex-col gap-2 self-start pt-2 text-plain">
+          <p className="truncate text-sm leading-none font-semibold">
             <HighlightedText text={product.title} highlight={highlight} />
           </p>
-          <p>
+          <p className="leading-none">
             <span className="text-xl font-bold">{price}</span>{" "}
             <span className="text-xs">{t("currency")}</span>
           </p>
         </div>
 
-        <p className="hidden shrink-0 items-center gap-1 text-sm text-plain sm:flex">
+        <p className="hidden shrink-0 items-center gap-1 self-start pt-2 text-sm leading-none text-black sm:flex dark:text-plain">
           <Star
             aria-hidden="true"
-            className="size-5 fill-warning text-warning"
+            className="size-5 fill-rating-star text-rating-star"
           />
-          {t("searchRating", { rating })}
-          <span className="text-info">
+          {t.rich("searchRating", {
+            rating,
+            value: (chunks) => (
+              <span className="text-base font-semibold">{chunks}</span>
+            ),
+          })}
+          <span className="font-medium text-blue-600">
             {t("searchRatingsCount", { count: product.ratings })}
           </span>
         </p>

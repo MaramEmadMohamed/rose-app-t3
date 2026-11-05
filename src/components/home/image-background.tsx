@@ -1,14 +1,23 @@
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 type ImageBackgroundProps = {
   src: string;
   sizes: string;
+  overlayClassName: string;
   preload?: boolean;
 };
 
-// A photo that fills its parent and darkens toward the bottom, so the white
-// text on top stays readable. The parent needs "relative isolate".
-export function ImageBackground({ src, sizes, preload }: ImageBackgroundProps) {
+// A photo that fills its parent with a dark layer on top, so the white text
+// stays readable. Each place sets its own layer from the design.
+// The parent needs "relative isolate".
+export function ImageBackground({
+  src,
+  sizes,
+  overlayClassName,
+  preload,
+}: ImageBackgroundProps) {
   return (
     <>
       <Image
@@ -21,7 +30,7 @@ export function ImageBackground({ src, sizes, preload }: ImageBackgroundProps) {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-linear-to-t from-black/80 to-transparent"
+        className={cn("absolute inset-0 -z-10", overlayClassName)}
       />
     </>
   );

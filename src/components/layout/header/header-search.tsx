@@ -60,9 +60,18 @@ export function HeaderSearch() {
 
   return (
     <search ref={searchRef} className="relative min-w-0 flex-1">
+      {/* While the panel is open, the box and the list below look like one
+          card, like the design. The line under the box turns maroon once
+          something is typed. */}
       <form
         onSubmit={handleSubmit}
-        className="flex h-13 items-center gap-2 rounded-xl border border-soft bg-plain px-4 focus-within:border-default focus-within:ring-3 focus-within:ring-focus"
+        className={cn(
+          "flex h-13 items-center gap-2 rounded-xl border border-soft bg-plain px-4",
+          isOpen
+            ? "rounded-t-3xl rounded-b-none border-transparent border-b-subtle"
+            : "focus-within:border-default focus-within:ring-3 focus-within:ring-focus",
+          isOpen && query && "border-b-maroon-600",
+        )}
       >
         <Search aria-hidden="true" className="size-5 shrink-0 text-muted" />
         <label htmlFor="header-search" className="sr-only">
@@ -81,7 +90,7 @@ export function HeaderSearch() {
           onFocus={openPanel}
           aria-controls={isOpen ? panelId : undefined}
           placeholder={t("searchPlaceholder")}
-          className="min-w-0 flex-1 bg-transparent text-sm text-plain outline-none placeholder:text-muted [&::-webkit-search-cancel-button]:appearance-none"
+          className="min-w-0 flex-1 bg-transparent text-plain outline-none placeholder:text-sm placeholder:text-muted [&::-webkit-search-cancel-button]:appearance-none"
         />
         {query && (
           <button

@@ -50,7 +50,7 @@
     "searchLoading": "جارٍ البحث...",
     "searchError": "تعذّر تحميل المنتجات، حاول مرة أخرى.",
     "searchNoResults": "لا توجد منتجات تطابق «{searchTerm}»",
-    "searchRating": "التقييم: {rating}/5",
+    "searchRating": "التقييم: <value>{rating}/5</value>",
     "searchRatingsCount": "({count, plural, zero {لا توجد تقييمات} one {تقييم واحد} two {تقييمان} few {# تقييمات} many {# تقييمًا} other {# تقييم}})",
     "currency": "ج.م"
   },

@@ -9,13 +9,16 @@ import { Link } from "@/i18n/navigation";
 import { FOCUS_RING_CLASS_NAME } from "@/lib/styles/focus-ring";
 import { cn } from "@/lib/utils";
 
+import { PHOTO_BUTTON_CLASS_NAME } from "../home-styles";
 import { ImageBackground } from "../image-background";
 import { HERO_AUTOPLAY_DELAY_MS, HERO_SLIDES } from "./hero-slides";
 
 const ARROW_BUTTON_CLASS_NAME = cn(
-  "flex size-8 items-center justify-center rounded-full text-primary-saturated transition-colors hover:bg-secondary-faint",
+  "flex items-center justify-center rounded-full text-maroon-700 transition-opacity hover:opacity-70",
   FOCUS_RING_CLASS_NAME,
 );
+
+const ARROW_ICON_CLASS_NAME = "size-7.5 rtl:rotate-180";
 
 export function HeroCarousel() {
   // Translation
@@ -77,7 +80,7 @@ export function HeroCarousel() {
       onMouseLeave={resumeAutoplay}
       onFocus={pauseAutoplay}
       onBlur={resumeAutoplay}
-      className="relative h-110 overflow-hidden rounded-2xl bg-primary"
+      className="relative h-110 overflow-hidden rounded-2xl bg-maroon-700"
     >
       <div ref={viewportRef} className="h-full overflow-hidden">
         <div className="flex h-full">
@@ -91,25 +94,22 @@ export function HeroCarousel() {
                 total: HERO_SLIDES.length,
               })}
               inert={index !== selectedIndex}
-              className="relative isolate flex h-full min-w-0 shrink-0 grow-0 basis-full flex-col justify-end p-6 text-white sm:p-9"
+              className="relative isolate flex h-full min-w-0 shrink-0 grow-0 basis-full flex-col justify-end gap-1.5 p-6 text-white sm:p-9"
             >
               <ImageBackground
                 src={slide.image}
                 sizes="(min-width: 1024px) 955px, 100vw"
                 preload={index === 0}
+                overlayClassName="bg-linear-to-r from-black/80 to-transparent rtl:bg-linear-to-l"
               />
 
-              <h2 className="text-3xl font-bold sm:text-4xl">
+              <h2 className="text-3xl leading-none font-semibold sm:text-4xl">
                 {t(`${slide.id}Title`)}
               </h2>
-              <p className="mt-1.5">{t(`${slide.id}Subtitle`)}</p>
-              <Link
-                href={slide.href}
-                className={cn(
-                  "mt-6 w-fit rounded-lg bg-secondary-fade px-4 py-2 font-medium text-primary-saturated transition-opacity hover:opacity-90",
-                  FOCUS_RING_CLASS_NAME,
-                )}
-              >
+              <p className="min-h-12 leading-none">
+                {t(`${slide.id}Subtitle`)}
+              </p>
+              <Link href={slide.href} className={PHOTO_BUTTON_CLASS_NAME}>
                 {t(`${slide.id}Action`)}
               </Link>
             </div>
@@ -128,8 +128,8 @@ export function HeroCarousel() {
               aria-label={t("goToSlide", { number: index + 1 })}
               aria-current={isSelected}
               className={cn(
-                "h-2 rounded-full transition-all",
-                isSelected ? "w-8 bg-primary-saturated" : "w-2 bg-white",
+                "h-2.5 rounded-full transition-all",
+                isSelected ? "w-9 bg-maroon-600" : "w-2.5 bg-maroon-50",
                 FOCUS_RING_CLASS_NAME,
               )}
             />
@@ -138,14 +138,18 @@ export function HeroCarousel() {
       </div>
 
       {/* On phones the dots and swiping are enough, and the arrows would cover the button. */}
-      <div className="absolute end-9 bottom-9 hidden items-center gap-1 rounded-full bg-secondary-fade p-1 sm:flex">
+      <div className="absolute end-9 bottom-9 hidden h-8.75 w-18.5 items-center justify-between rounded-full bg-maroon-50 sm:flex">
         <button
           type="button"
           onClick={() => emblaApi?.scrollPrev()}
           aria-label={t("previousSlide")}
           className={ARROW_BUTTON_CLASS_NAME}
         >
-          <ChevronLeft aria-hidden="true" className="size-5 rtl:rotate-180" />
+          <ChevronLeft
+            aria-hidden="true"
+            absoluteStrokeWidth
+            className={ARROW_ICON_CLASS_NAME}
+          />
         </button>
         <button
           type="button"
@@ -153,7 +157,11 @@ export function HeroCarousel() {
           aria-label={t("nextSlide")}
           className={ARROW_BUTTON_CLASS_NAME}
         >
-          <ChevronRight aria-hidden="true" className="size-5 rtl:rotate-180" />
+          <ChevronRight
+            aria-hidden="true"
+            absoluteStrokeWidth
+            className={ARROW_ICON_CLASS_NAME}
+          />
         </button>
       </div>
     </section>

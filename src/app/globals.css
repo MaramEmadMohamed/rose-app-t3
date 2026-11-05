@@ -358,12 +358,20 @@
   --font-family: var(--font-tajawal), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Brand primitives with no semantic token: the always-dark footer and the
-   active navigation item, whose colours flip against the bar. */
+/* Brand primitives with no semantic token: the always-dark footer, the
+   active navigation item (its colours flip against the bar), and the home
+   page, where the design picks these exact shades per theme. */
 @theme inline {
+  --color-maroon-50: var(--maroon-50);
+  --color-maroon-400: var(--maroon-400);
+  --color-maroon-600: var(--maroon-600);
+  --color-maroon-700: var(--maroon-700);
   --color-maroon-800: var(--maroon-800);
   --color-soft-pink-200: var(--soft-pink-200);
   --color-soft-pink-300: var(--soft-pink-300);
+  --color-soft-pink-400: var(--soft-pink-400);
+  --color-soft-pink-500: var(--soft-pink-500);
+  --color-rating-star: #ffa508;
 }
 
 @layer base {

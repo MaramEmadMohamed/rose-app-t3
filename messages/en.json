@@ -50,7 +50,7 @@
     "searchLoading": "Searching...",
     "searchError": "Couldn't load products. Please try again.",
     "searchNoResults": "No products match “{searchTerm}”",
-    "searchRating": "Rating: {rating}/5",
+    "searchRating": "Rating: <value>{rating}/5</value>",
     "searchRatingsCount": "({count, plural, one {# rating} other {# ratings}})",
     "currency": "EGP"
   },
