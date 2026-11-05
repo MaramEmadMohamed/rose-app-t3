@@ -116,7 +116,21 @@
     "chocolatesAction": "Shop Now",
     "cardBadge": "Starting from 10.99 EGP",
     "cardTitle": "Special Gifts For The People You Love",
-    "cardAction": "Shop Now"
+    "cardAction": "Shop Now",
+    "weddingLabel": "Wedding",
+    "weddingTitle": "Celebrate Her Forever with a Gift She’ll Always Remember",
+    "engagementLabel": "Engagement",
+    "engagementTitle": "Honor the Beginning of a Beautiful Journey Together",
+    "anniversaryLabel": "Anniversary",
+    "anniversaryTitle": "Mark Every Year of Love with a Meaningful Surprise",
+    "deliveryTitle": "Free Delivery",
+    "deliveryText": "For orders above 120 EGP",
+    "refundTitle": "Get Refund",
+    "refundText": "Refunds within 30 days",
+    "paymentTitle": "Safe Payment",
+    "paymentText": "100% Secure Payment",
+    "supportTitle": "24/7 Support",
+    "supportText": "Contact us at any time"
   },
 
   "About": {

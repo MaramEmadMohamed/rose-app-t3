@@ -62,7 +62,7 @@ export function AboutSection() {
       <div className="flex flex-col items-start gap-6">
         <div className="flex flex-col gap-2">
           {/* Arabic letters are joined, so spacing them out would break the word. */}
-          <p className="text-sm font-semibold tracking-[0.3em] text-secondary uppercase rtl:tracking-normal">
+          <p className="font-bold tracking-[0.25em] text-secondary uppercase rtl:tracking-normal">
             {t("label")}
           </p>
           <h2

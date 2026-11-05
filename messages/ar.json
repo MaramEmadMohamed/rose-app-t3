@@ -116,7 +116,21 @@
     "chocolatesAction": "تسوق الآن",
     "cardBadge": "تبدأ من 10.99 ج.م",
     "cardTitle": "هدايا مميزة لمن تحب",
-    "cardAction": "تسوق الآن"
+    "cardAction": "تسوق الآن",
+    "weddingLabel": "زفاف",
+    "weddingTitle": "احتفل بها للأبد بهدية لن تنساها",
+    "engagementLabel": "خطوبة",
+    "engagementTitle": "احتفِ ببداية رحلة جميلة معًا",
+    "anniversaryLabel": "ذكرى سنوية",
+    "anniversaryTitle": "احتفل بكل عام من الحب بمفاجأة مميزة",
+    "deliveryTitle": "توصيل مجاني",
+    "deliveryText": "للطلبات فوق 120 ج.م",
+    "refundTitle": "استرداد المبلغ",
+    "refundText": "استرداد خلال 30 يومًا",
+    "paymentTitle": "دفع آمن",
+    "paymentText": "دفع آمن بنسبة 100٪",
+    "supportTitle": "دعم 24/7",
+    "supportText": "تواصل معنا في أي وقت"
   },
 
   "About": {

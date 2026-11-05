@@ -2,7 +2,6 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
@@ -10,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { FOCUS_RING_CLASS_NAME } from "@/lib/styles/focus-ring";
 import { cn } from "@/lib/utils";
 
+import { ImageBackground } from "../image-background";
 import { HERO_AUTOPLAY_DELAY_MS, HERO_SLIDES } from "./hero-slides";
 
 const ARROW_BUTTON_CLASS_NAME = cn(
@@ -93,17 +93,10 @@ export function HeroCarousel() {
               inert={index !== selectedIndex}
               className="relative isolate flex h-full min-w-0 shrink-0 grow-0 basis-full flex-col justify-end p-6 text-white sm:p-9"
             >
-              <Image
+              <ImageBackground
                 src={slide.image}
-                alt=""
-                fill
                 sizes="(min-width: 1024px) 955px, 100vw"
                 preload={index === 0}
-                className="-z-10 object-cover"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 -z-10 bg-linear-to-t from-black/80 to-transparent"
               />
 
               <h2 className="text-3xl font-bold sm:text-4xl">
