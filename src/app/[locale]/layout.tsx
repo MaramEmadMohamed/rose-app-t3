@@ -44,7 +44,9 @@ export default async function LocaleLayout({
       className={`${sarabun.variable} ${tajawal.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      {/* Browser extensions (e.g. ColorZilla) add attributes to <body> before
+          React loads, so React must not warn about the body's own attributes. */}
+      <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <NextIntlClientProvider>
           <ThemeProvider
             attribute="class"
