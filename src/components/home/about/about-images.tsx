@@ -18,7 +18,7 @@ export function AboutImages() {
         <div
           aria-hidden="true"
           className={cn(
-            "absolute start-[2.9%] top-[1.9%] h-[96.3%] w-[81.6%] rotate-[3.09deg] border-4 border-maroon-600 rtl:-rotate-[3.09deg]",
+            "absolute start-[2.9%] top-[1.9%] h-[96.3%] w-[81.6%] rotate-[3.09deg] border-4 border-maroon-600 rtl:-rotate-[3.09deg] dark:border-soft-pink-400",
             GIFT_SHAPE_CLASS_NAME,
           )}
         />
