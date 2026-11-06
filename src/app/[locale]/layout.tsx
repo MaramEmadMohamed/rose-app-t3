@@ -5,8 +5,8 @@ import { setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { routing } from "@/i18n/routing";
 import { sarabun, tajawal } from "@/lib/fonts";
+import { AuthProvider } from "@/components/providers/session-provider";
 import "../globals.css";
-
 export const metadata: Metadata = {
   title: "Rose App",
   description: "Rose App",
@@ -42,13 +42,8 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <AuthProvider>{children}</AuthProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

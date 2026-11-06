@@ -13,5 +13,81 @@
   "HomePage": {
     "title": "أهلاً بك في تطبيق روز",
     "description": "مشروع الواجهة الأمامية الحديث الخاص بك."
+  },
+ "UserMenu": {
+  "hello": "مرحباً",
+  "account": "حسابي",
+  "addresses": "العناوين",
+  "orders": "الطلبات",
+  "dashboard": "لوحة التحكم",
+  "logout": "تسجيل الخروج"
+}
+,
+  "register": {
+    "title": "كوني جزءًا من عائلتنا!",
+    "stepperLabel": "مراحل التسجيل",
+    "createAccount": "إنشاء حساب",
+    "next": "التالي",
+    "email": {
+      "label": "البريد الإلكتروني",
+      "placeholder": "user@example.com",
+      "sending": "جاري الإرسال...",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "login": "تسجيل الدخول"
+    },
+    "otp": {
+      "subtitle": "أدخل رمز التحقق",
+      "sentTo": "أرسلنا رمزًا من 6 أرقام إلى",
+      "edit": "تعديل",
+      "verify": "تحقق من الرمز",
+      "verifying": "جاري التحقق...",
+      "resendIn": "إعادة إرسال الرمز بعد",
+      "resent": "تم إرسال رمز جديد"
+    },
+    "profile": {
+      "subtitle": "أخبرنا المزيد عنك.",
+      "hint": "بعض التفاصيل للبدء",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "username": "اسم المستخدم",
+      "phone": "رقم الهاتف",
+      "gender": "النوع",
+      "genderPlaceholder": "اختر النوع",
+      "male": "ذكر",
+      "female": "أنثى",
+      "countryLabel": "الدولة",
+      "searchCountryLabel": "ابحث عن دولة",
+      "noCountryLabel": "لا توجد نتائج"
+    },
+    "password": {
+      "subtitle": "أنشئ كلمة مرور قوية",
+      "hint": "اختر كلمة مرور آمنة لحماية حسابك",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "show": "إظهار كلمة المرور",
+      "hide": "إخفاء كلمة المرور",
+      "creating": "جاري الإنشاء..."
+    },
+    "done": {
+      "title": "تم إنشاء حسابك 🎉",
+      "subtitle": "أهلًا بك في عائلتنا!",
+      "login": "تسجيل الدخول"
+    },
+    "validation": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "أدخل بريدًا إلكترونيًا صحيحًا",
+      "otpInvalid": "أدخل الرمز المكوّن من 6 أرقام",
+      "nameShort": "قصير جدًا",
+      "usernameShort": "3 أحرف على الأقل",
+      "usernameInvalid": "حروف وأرقام و _ و . فقط",
+      "phoneInvalid": "رقم هاتف غير صحيح",
+      "genderRequired": "اختر النوع",
+      "passwordShort": "8 أحرف على الأقل",
+      "passwordUpper": "حرف كبير واحد على الأقل",
+      "passwordNumber": "رقم واحد على الأقل",
+      "passwordMismatch": "كلمتا المرور غير متطابقتين"
+    }
   }
+
+
 }

@@ -13,5 +13,79 @@
   "HomePage": {
     "title": "Welcome to Rose App",
     "description": "Discover our beautiful collection of fresh roses."
+  },
+  "UserMenu": {
+    "hello": "Hello",
+    "account": "Account",
+    "addresses": "Addresses",
+    "orders": "Orders",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "register": {
+    "title": "Become part of our family!",
+    "stepperLabel": "Registration progress",
+    "createAccount": "Create Account",
+    "next": "Next",
+    "email": {
+      "label": "Email",
+      "placeholder": "user@example.com",
+      "sending": "Sending...",
+      "haveAccount": "Already have an account?",
+      "login": "Login"
+    },
+    "otp": {
+  "subtitle": "Enter the OTP Code",
+  "sentTo": "We have sent a 6-digit code to",
+  "edit": "Edit",
+  "verify": "Verify Code",
+  "verifying": "Verifying...",
+  "resend": "Send a new code",
+  "resendIn": "Resend code in",
+  "resent": "A new code has been sent"
+},
+    "profile": {
+      "subtitle": "Tell us more about you.",
+      "hint": "A few details to get started",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "username": "Username",
+      "phone": "Phone",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "male": "Male",
+      "female": "Female",
+      "countryLabel": "Country",
+      "searchCountryLabel": "Search country",
+      "noCountryLabel": "No country found"
+    },
+    "password": {
+      "subtitle": "Create a strong password",
+      "hint": "Choose a secure password to protect your account",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "show": "Show password",
+      "hide": "Hide password",
+      "creating": "Creating..."
+    },
+    "done": {
+      "title": "Your account has been created 🎉",
+      "subtitle": "Welcome to the family!",
+      "login": "Login"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email address",
+      "otpInvalid": "Enter the 6-digit code",
+      "nameShort": "Too short",
+      "usernameShort": "At least 3 characters",
+      "usernameInvalid": "Letters, numbers, _ and . only",
+      "phoneInvalid": "Invalid phone number",
+      "genderRequired": "Select your gender",
+      "passwordShort": "At least 8 characters",
+      "passwordUpper": "One uppercase letter",
+      "passwordNumber": "One number",
+      "passwordMismatch": "Passwords do not match"
+    }
   }
 }
