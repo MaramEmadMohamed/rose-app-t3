@@ -57,7 +57,6 @@ export default function BestSellingCard({
             src={product.cover}
             alt={product.title}
             fill
-            // sizes="(max-width: 302px) 80vw, (max-width: 1023px) 40vw, 25vw"
             className="object-cover max-w-75.5  h-68 hover:cursor-pointer transition-transform duration-300 group-hover:scale-105"
           />
         )}

@@ -11,7 +11,7 @@ const companies = [
 export default function TrustedCompanies() {
   return (
     <section className="w-full px-4 py-8 md:py-10">
-      <div className="mx-auto max-w-7xl  rounded-2xl bg-[#fbedef] px-5 py-5 dark:text-[rgb(63,63,70)] sm:px-8 sm:py-6">
+      <div className="mx-auto max-w-7xl  rounded-2xl bg-[#fbedef] px-5 py-5 dark:text-[rgb(63,63,70)] dark:bg-[rgb(63,63,70)] sm:px-8 sm:py-6">
         <h2 className=" my-10 text-center text-4xl dark:text-[rgb(255,194,208)] font-bold text-[#741c21] ">
           Trusted by over <span className="text-[#ff668b] dark:text-[rgb(215,84,88)]">4.5k+</span> companies
         </h2>
