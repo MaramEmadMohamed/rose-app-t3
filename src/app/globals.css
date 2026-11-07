@@ -6,6 +6,7 @@
 @theme inline {
   --font-sans: var(--font-family);
   --font-heading: var(--font-family);
+  --font-script: var(--font-script);
 
   /* ---- Brand / status colors (work with bg-, text-, border-, ring-) ---- */
   --color-primary: var(--primary);
@@ -200,6 +201,9 @@
 
 :root {
   --radius: 0.5rem;
+   --field-height: 3rem;
+  --field-padding-x: 1rem;
+  --otp-slot-size: 2.8125rem;
 
   /* Background */
   --bg-plain: var(--white);
@@ -348,9 +352,7 @@
   --ring-danger: #452b2c;
 
 
-    --field-height: 3rem;
-  --field-padding-x: 1rem;
-  --otp-slot-size: 2.8125rem;
+   
 }
 
 /* Fonts: Sarabun for English, Tajawal for Arabic.
