@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Star } from "lucide-react";
-import type { Testimonial } from "../api/get-testimonials";
+import type { Testimonial } from "../types";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   const date = new Intl.DateTimeFormat("en-US", {

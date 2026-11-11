@@ -1,6 +1,6 @@
-import { Testimonial, TestimonialsResponse } from "@/app/types/testimonials";
 import "server-only";
 
+import type { Testimonial, TestimonialsResponse } from "../types";
 
 
 export async function getTestimonials(): Promise<Testimonial[]> {

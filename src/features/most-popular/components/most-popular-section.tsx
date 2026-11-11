@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import BestSellingCard from "../../best-selling/components/best-selling-card";
 import type { Product } from "../../best-selling/types";
 import type { MostPopularTab } from "../constants";
-import Heading from "@/components/ui/heading";
+import Heading from "@/features/home/components/section-heading";
 
 interface Props {
   tabs: MostPopularTab[];
@@ -15,12 +15,16 @@ interface Props {
 }
 
 export default function MostPopularSection({ tabs, initialTab, initialProducts }: Props) {
+  // State
   const [activeTab, setActiveTab] = useState(initialTab);
   const [products, setProducts] = useState(initialProducts);
   const [isLoading, setIsLoading] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
+
+  // Ref
   const requestId = useRef(0);
 
+  // Functions
   async function selectTab(label: string, occasionId: string | null) {
     const currentRequest = ++requestId.current;
     setActiveTab(label);
@@ -56,9 +60,7 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-10 lg:px-6">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-        <h2 className="text-xl font-bold text-[#741c21] dark:text-[#ffd4dc] md:text-2xl">
-         <Heading  Heading={""} SubHeading1="Most " SubHeading2="Popular" />
-        </h2>
+        <Heading label="" title="Most " highlight="Popular" />
 
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           {tabs.map((tab) => (

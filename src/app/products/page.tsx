@@ -1,5 +1,5 @@
-import BestSellingCard from "../feature/best-selling/components/best-selling-card";
-import { getProductsForOccasion } from "../feature/most-popular/api/get-products";
+import BestSellingCard from "@/features/best-selling/components/best-selling-card";
+import { getProductsForOccasion } from "@/features/most-popular/api/get-products";
 
 export default async function ProductsPage() {
   const products = await getProductsForOccasion();

@@ -6,7 +6,7 @@ import { MOST_POPULAR_LIMIT } from "../constants";
 export async function getProductsForOccasion(
   occasionId?: string,
 ): Promise<Product[]> {
-  const apiBaseUrl = process.env.API?.trim();
+  const apiBaseUrl = process.env.API_URL?.trim();
   if (!apiBaseUrl) return [];
 
   try {
@@ -16,7 +16,7 @@ export async function getProductsForOccasion(
 
     if (occasionId) url.searchParams.set("occasionId", occasionId);
 
-    const response = await fetch(url, { cache: "no-store" });
+    const response = await fetch(url.href, { cache: "no-store" });
     if (!response.ok) return [];
 
     const result = (await response.json()) as ProductsResponse;

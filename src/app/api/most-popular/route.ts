@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getProductsForOccasion } from "@/app/feature/most-popular/api/get-products";
+import { getProductsForOccasion } from "@/features/most-popular/api/get-products";
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as

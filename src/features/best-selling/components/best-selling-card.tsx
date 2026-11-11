@@ -40,6 +40,7 @@ export default function BestSellingCard({
   product,
   isHot = false,
 }: BestSellingCardProps) {
+  // Variables
   const discountedPrice = getDiscountedPrice(product);
 
   const hasDiscount =

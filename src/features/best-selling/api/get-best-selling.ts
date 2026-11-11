@@ -14,7 +14,7 @@ import type {
 async function fetchProductsPage(
   page: number
 ): Promise<ProductsResponse> {
-  const apiBaseUrl = process.env.API?.trim();
+  const apiBaseUrl = process.env.API_URL?.trim();
 
   if (!apiBaseUrl) {
     throw new Error("API is not set. Add the API base URL to .env and restart the dev server.");

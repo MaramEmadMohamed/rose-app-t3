@@ -10,7 +10,6 @@ export default async function BestSelling() {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-12 lg:px-6">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[250px_minmax(0,1fr)] lg:items-center lg:gap-8">
-        {/* Left Content */}
         <div className="flex flex-col items-start">
           <span className="mb-2.5 text-[16px] font-bold uppercase tracking-[0.3em] text-[#ff668b]">
             Best Selling
@@ -39,7 +38,6 @@ export default async function BestSelling() {
           </button>
         </div>
 
-        {/* Right Content */}
         <div className="min-w-0">
           <BestSellingCarousel products={products} />
         </div>

@@ -14,7 +14,7 @@ interface OccasionsResponse {
 }
 
 export async function getMostPopularTabs(): Promise<MostPopularTab[]> {
-  const apiBaseUrl = process.env.API?.trim();
+  const apiBaseUrl = process.env.API_URL?.trim();
   if (!apiBaseUrl) {
     return MOST_POPULAR_LABELS.map((label) => ({ label, occasionId: null }));
   }
@@ -24,7 +24,7 @@ export async function getMostPopularTabs(): Promise<MostPopularTab[]> {
     url.searchParams.set("page", "1");
     url.searchParams.set("limit", "100");
 
-    const response = await fetch(url, { cache: "no-store" });
+    const response = await fetch(url.href, { cache: "no-store" });
     if (!response.ok) throw new Error("Unable to load occasions.");
 
     const result = (await response.json()) as OccasionsResponse;
