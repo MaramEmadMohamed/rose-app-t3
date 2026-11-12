@@ -3,11 +3,12 @@
 import { useState } from "react";
 
 import { ForgotPasswordForm } from "./forgot-password-form";
+import { ResetPasswordForm } from "./reset-password-form";
 import { ResetLinkSent } from "./rest-link-sent";
 
 type Step = "email" | "sent";
 
-export function ForgotPasswordFlow() {
+export function ForgotPasswordFlow({ token }: { token?: string }) {
   // State
   const [step, setStep] = useState<Step>("email");
   const [email, setEmail] = useState("");
@@ -21,6 +22,8 @@ export function ForgotPasswordFlow() {
   function handleEdit() {
     setStep("email");
   }
+
+  if (token) return <ResetPasswordForm token={token} />;
 
   if (step === "sent") {
     return <ResetLinkSent email={email} onEdit={handleEdit} />;

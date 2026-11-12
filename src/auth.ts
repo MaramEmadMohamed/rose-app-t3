@@ -1,7 +1,12 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
-import { API_BASE_URL } from "@/lib/constants/api";
+import { SERVER_API_URL } from "@/lib/constants/server-api";
+import {
+  InvalidCredentialsError,
+  LoginServiceError,
+} from "@/lib/auth/auth-errors";
+
 import type { LoginResponse } from "@/types/auth";
 
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
@@ -22,18 +27,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
 
       async authorize(credentials) {
-        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: credentials.username,
-            password: credentials.password,
-          }),
-        });
+        let response: Response;
 
-        if (!response.ok) return null;
+        try {
+          response = await fetch(`${SERVER_API_URL}/api/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: credentials.username,
+              password: credentials.password,
+            }),
+          });
+        } catch {
+          throw new LoginServiceError();
+        }
+
+        if (response.status >= 400 && response.status < 500) {
+          throw new InvalidCredentialsError();
+        }
+        if (!response.ok) throw new LoginServiceError();
 
         const { payload }: LoginResponse = await response.json();
         const { user, token } = payload;

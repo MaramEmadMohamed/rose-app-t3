@@ -5,20 +5,13 @@ import { signIn } from "next-auth/react";
 
 import type { LoginValues } from "@/lib/schemas/login-schema";
 
-export class LoginError extends Error {
-  readonly code: string;
+type LoginResult = { success: true } | { success: false; code?: string };
 
-  constructor(code: string) {
-    super(code);
-    this.name = "LoginError";
-    this.code = code;
-  }
-}
-
-async function loginWithCredentials(values: LoginValues) {
+async function loginWithCredentials(values: LoginValues): Promise<LoginResult> {
   const result = await signIn("credentials", { ...values, redirect: false });
 
-  if (result?.error) throw new LoginError(result.code ?? result.error);
+  if (!result?.error) return { success: true };
+  return { success: false, code: result.code };
 }
 
 export function useLogin() {

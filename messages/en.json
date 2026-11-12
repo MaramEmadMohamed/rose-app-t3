@@ -122,11 +122,12 @@
     "emailRequired": "Email is required",
     "emailInvalid": "Enter a valid email address",
     "serverError": "Something went wrong. Please try again.",
-    "linkSent": "A new OTP code has been sent to your email.",
+    "linkSent": "A password reset link has been sent to your email.",
     "sentTitle": "Password Reset Sent",
     "sentTo": "We have sent a password reset link to:",
     "editEmail": "Edit email",
-    "sentInfo": "If an account exists for this email address, we've sent password reset instructions. If you don't receive the email within a few minutes, check your spam or junk folder.",
+    "sentInfo": "If an account exists for this email address, we've sent password reset instructions.",
+
     "sentSpam": "If you don't see the email within a few minutes, check your spam or junk folder.",
     "needHelp": "Need help?",
     "contactUs": "Contact us"

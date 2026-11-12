@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/use-login";
 import { Link, useRouter } from "@/i18n/navigation";
 import { loginSchema, type LoginValues } from "@/lib/schemas/login-schema";
+import { LOGIN_ERROR_CODE } from "@/lib/auth/auth-errors";
+import { AuthTitle } from "@/components/auth/auth-title";
 
 type LoginMessageKey = "usernameRequired" | "passwordRequired";
 
@@ -29,6 +31,7 @@ export function LoginForm() {
     register,
     handleSubmit,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
@@ -42,21 +45,35 @@ export function LoginForm() {
     LoginMessageKey | undefined;
 
   // Functions
+
+  const LOGIN_ERROR_MESSAGE_KEY = {
+    [LOGIN_ERROR_CODE.INVALID_CREDENTIALS]: "invalidCredentials",
+    [LOGIN_ERROR_CODE.SERVICE_UNAVAILABLE]: "serverError",
+  } as const;
+
+  // داخل الـ component
   function onSubmit(values: LoginValues) {
+    clearErrors("root");
     login(values, {
-      onSuccess: () => {
+      onSuccess: (result) => {
+        if (!result.success) {
+          const key =
+            LOGIN_ERROR_MESSAGE_KEY[
+              result.code as keyof typeof LOGIN_ERROR_MESSAGE_KEY
+            ] ?? "serverError";
+          setError("root", { message: key });
+          return;
+        }
         router.replace("/");
         router.refresh();
       },
-      onError: () => setError("root", { message: "invalidCredentials" }),
+      onError: () => setError("root", { message: "serverError" }),
     });
   }
 
   return (
     <div className="flex w-full flex-col gap-6">
-      <h1 className="text-primary font-script text-center text-3xl">
-        {t("title")}
-      </h1>
+      <AuthTitle title={t("title")} />
 
       <form
         noValidate

@@ -1,5 +1,7 @@
-import { AuthOrnament } from "@/components/auth/auth-ornament";
 import Image from "next/image";
+
+import { AuthOrnament } from "@/components/auth/auth-ornament";
+import { LanguageSwitcher } from "@/components/layout/header/language-switcher";
 
 export default function AuthLayout({
   children,
@@ -8,7 +10,11 @@ export default function AuthLayout({
 }) {
   return (
     <main className="bg-plain grid min-h-screen flex-1 lg:grid-cols-2">
-      <section className="flex flex-col items-center justify-center gap-6 px-6 py-10">
+      <section className="relative flex flex-col items-center justify-center gap-6 px-6 py-10">
+        <div className="absolute end-6 top-6">
+          <LanguageSwitcher />
+        </div>
+
         <div className="flex w-full max-w-sm flex-col items-center gap-6">
           <AuthOrnament />
           {children}
