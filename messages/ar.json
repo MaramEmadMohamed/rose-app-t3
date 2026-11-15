@@ -1,0 +1,24 @@
+{
+  "BestSelling": {
+    "label": "الأكثر مبيعًا",
+    "title": "اختيارات الجميع الآن",
+    "highlight": "اكتشف",
+    "description": "مش عارف تختار إيه؟ ابدأ من الأكثر مبيعًا، دي الهدايا اللي عملاؤنا بيرجعوا يختاروها كل مرة. سواء كنت بتحتفل بعيد ميلاد أو ذكرى سنوية أو زفاف، اختياراتنا المميزة هتسيب ذكرى جميلة.",
+    "explore": "اكتشف الهدايا"
+  },
+  "MostPopular": {
+    "title": "الأكثر ", "highlight": "رواجًا", "loading": "جاري تحميل المنتجات", "viewMore": "عرض المزيد",
+    "unavailable": "منتجات {category} غير متاحة في واجهة API حاليًا.", "empty": "لا توجد منتجات لمناسبة {category}.",
+    "occasions": { "Wedding": "زفاف", "Anniversary": "ذكرى سنوية", "Birthday": "عيد ميلاد", "Engagement": "خطوبة" }
+  },
+  "Gallery": {
+    "label": "معرض الصور", "title": "شاهد", "highlight": "معرضنا الرائع",
+    "image1": "علب هدايا حمراء لعيد الميلاد", "image2": "ورود وشوكولاتة كهدية", "image3": "علب هدايا حمراء للخطوبة", "image4": "خاتم خطوبة تحيط به الورود", "image5": "خاتم داخل علبة هدايا", "image6": "دعوة خطوبة وعلبة خاتم"
+  },
+  "Testimonials": { "label": "آراء العملاء", "title": "كلام حقيقي", "highlight": "من عملائنا السعداء", "carouselLabel": "آراء العملاء", "rating": "التقييم {rating} من 5" },
+  "Companies": { "title": "موثوقون لدى أكثر من", "count": "4.5k+", "suffix": "شركة", "coconut": "كوكَنت لمستحضرات التجميل", "ginyard": "جينيارد", "ingoude": "إنجود كومباني", "velvet": "فيلفيت لمستحضرات التجميل", "habu": "هابو للأثاث" },
+  "Products": { "title": "المنتجات", "empty": "لا توجد منتجات." },
+  "Categories": { "title": "التصنيفات", "total": "إجمالي التصنيفات: {total}", "empty": "لا توجد تصنيفات.", "noDescription": "لا يوجد وصف", "products": "المنتجات: {count}" },
+  "ProductCard": { "hot": "رائج", "outOfStock": "نفد المخزون", "rating": "التقييم {rating} من 5", "addToCart": "أضف {title} إلى السلة", "currency": "جنيه" },
+  "Common": { "locale": "English", "previous": "السابق", "next": "التالي", "firstPage": "الانتقال إلى الصفحة الأولى", "previousPage": "الانتقال إلى الصفحة السابقة", "nextPage": "الانتقال إلى الصفحة التالية", "lastPage": "الانتقال إلى الصفحة الأخيرة", "morePages": "صفحات أخرى", "goToPage": "الانتقال إلى الصفحة {page}", "selectLanguage": "تغيير اللغة", "pagination": "التنقل بين الصفحات", "previousSlide": "الشريحة السابقة", "nextSlide": "الشريحة التالية" }
+}

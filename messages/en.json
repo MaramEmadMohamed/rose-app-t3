@@ -1,0 +1,24 @@
+{
+  "BestSelling": {
+    "label": "Best Selling",
+    "title": "What Everyone’s Buying Right Now",
+    "highlight": "Check Out",
+    "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you’re celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
+    "explore": "Explore gifts"
+  },
+  "MostPopular": {
+    "title": "Most ", "highlight": "Popular", "loading": "Loading products", "viewMore": "View More",
+    "unavailable": "{category} products are not available in the API yet.", "empty": "No products found for {category}.",
+    "occasions": { "Wedding": "Wedding", "Anniversary": "Anniversary", "Birthday": "Birthday", "Engagement": "Engagement" }
+  },
+  "Gallery": {
+    "label": "Gallery", "title": "Check Out", "highlight": "our Wonderful Gallery",
+    "image1": "Red birthday gift boxes", "image2": "Roses and chocolate gift", "image3": "Red engagement gift boxes", "image4": "Engagement ring surrounded by roses", "image5": "Engagement ring gift box", "image6": "Engagement invitation and ring box"
+  },
+  "Testimonials": { "label": "Testimonials", "title": "Real Words", "highlight": "from Happy Customers", "carouselLabel": "Customer testimonials", "rating": "Rated {rating} out of 5" },
+  "Companies": { "title": "Trusted by over", "count": "4.5k+", "suffix": "companies", "coconut": "Coconut Cosmetics", "ginyard": "Ginyard", "ingoude": "Ingoude Company", "velvet": "Velvet Cosmetics", "habu": "Habu Furniture" },
+  "Products": { "title": "Products", "empty": "No products found." },
+  "Categories": { "title": "Categories", "total": "Total categories: {total}", "empty": "No categories found.", "noDescription": "No description", "products": "Products: {count}" },
+  "ProductCard": { "hot": "HOT", "outOfStock": "OUT OF STOCK", "rating": "Rated {rating} out of 5", "addToCart": "Add {title} to cart", "currency": "EGP" },
+  "Common": { "locale": "العربية", "previous": "Previous", "next": "Next", "firstPage": "Go to first page", "previousPage": "Go to previous page", "nextPage": "Go to next page", "lastPage": "Go to last page", "morePages": "More pages", "goToPage": "Go to page {page}", "selectLanguage": "Change language", "pagination": "pagination", "previousSlide": "Previous slide", "nextSlide": "Next slide" }
+}

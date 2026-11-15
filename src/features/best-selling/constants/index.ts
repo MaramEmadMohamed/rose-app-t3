@@ -1,0 +1,3 @@
+export const BEST_SELLING_LIMIT = 10;
+
+export const BEST_SELLING_REVALIDATE = 3600;
