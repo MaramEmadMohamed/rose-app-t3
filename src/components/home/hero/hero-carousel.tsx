@@ -22,7 +22,8 @@ const ARROW_BUTTON_CLASS_NAME = cn(
   FOCUS_RING_CLASS_NAME,
 );
 
-const ARROW_ICON_CLASS_NAME = "size-7.5 rtl:rotate-180";
+const ARROW_ICON_CLASS_NAME = "rtl:rotate-180";
+const ARROW_ICON_SIZE = 30;
 
 export function HeroCarousel() {
   // Translation
@@ -41,7 +42,6 @@ export function HeroCarousel() {
   });
 
   // Functions
-  // The slides stay still while the mouse or the keyboard focus is on them.
   function pauseAutoplay() {
     setIsPaused(true);
   }
@@ -67,7 +67,6 @@ export function HeroCarousel() {
   useEffect(() => {
     if (!emblaApi || isPaused) return;
 
-    // People who asked their system for less motion get no autoplay.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const timer = setInterval(
@@ -152,6 +151,7 @@ export function HeroCarousel() {
         >
           <ChevronLeft
             aria-hidden="true"
+            size={ARROW_ICON_SIZE}
             absoluteStrokeWidth
             className={ARROW_ICON_CLASS_NAME}
           />
@@ -164,6 +164,7 @@ export function HeroCarousel() {
         >
           <ChevronRight
             aria-hidden="true"
+            size={ARROW_ICON_SIZE}
             absoluteStrokeWidth
             className={ARROW_ICON_CLASS_NAME}
           />

@@ -47,7 +47,6 @@ export function HeaderSearch() {
     inputRef.current?.focus();
   }
 
-  // Enter opens the products page with the search term in the URL.
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -60,9 +59,7 @@ export function HeaderSearch() {
 
   return (
     <search ref={searchRef} className="relative min-w-0 flex-1">
-      {/* While the panel is open, the box and the list below look like one
-          card, like the design. The line under the box turns maroon once
-          something is typed. */}
+      {/* While the panel is open, the box and the list below look like one card. */}
       <form
         onSubmit={handleSubmit}
         className={cn(
@@ -70,7 +67,7 @@ export function HeaderSearch() {
           isOpen
             ? "rounded-t-3xl rounded-b-none border-transparent border-b-subtle"
             : "focus-within:border-default focus-within:ring-3 focus-within:ring-focus",
-          isOpen && query && "border-b-maroon-600",
+          isOpen && query && "border-b-primary-saturated",
         )}
       >
         <Search aria-hidden="true" className="size-5 shrink-0 text-muted" />

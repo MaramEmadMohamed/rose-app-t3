@@ -53,7 +53,7 @@ export function SearchResultItem({
           </p>
         </div>
 
-        <p className="hidden shrink-0 items-center gap-1 self-start pt-2 text-sm leading-none text-black sm:flex dark:text-plain">
+        <p className="hidden shrink-0 items-center gap-1 self-start pt-2 text-sm leading-none text-plain sm:flex">
           <Star
             aria-hidden="true"
             className="size-5 fill-rating-star text-rating-star"
@@ -64,7 +64,7 @@ export function SearchResultItem({
               <span className="text-base font-semibold">{chunks}</span>
             ),
           })}
-          <span className="font-medium text-blue-600">
+          <span className="font-medium text-info">
             {t("searchRatingsCount", { count: product.ratings })}
           </span>
         </p>

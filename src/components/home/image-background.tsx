@@ -9,9 +9,7 @@ type ImageBackgroundProps = {
   preload?: boolean;
 };
 
-// A photo that fills its parent with a dark layer on top, so the white text
-// stays readable. Each place sets its own layer from the design.
-// The parent needs "relative isolate".
+// WARNING: the parent needs "relative isolate", or the photo leaves its box.
 export function ImageBackground({
   src,
   sizes,

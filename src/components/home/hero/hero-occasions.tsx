@@ -7,8 +7,6 @@ import { cn } from "@/lib/utils";
 import { ImageBackground } from "../image-background";
 import { ImageBadge } from "../image-badge";
 
-// Each id is also the prefix of the card's texts in the "Hero" messages,
-// e.g. "weddingLabel" and "weddingTitle".
 const OCCASIONS = [
   { id: "wedding", image: "/images/home/occasion-wedding.jpg" },
   { id: "engagement", image: "/images/home/occasion-engagement.jpg" },

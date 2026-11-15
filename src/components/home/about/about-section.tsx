@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 
 import { AboutImages } from "./about-images";
 
-// Keys of the short selling points in the "About" messages.
 const ABOUT_FEATURE_KEYS = [
   "featurePrices",
   "featureQuality",
@@ -34,7 +33,7 @@ export function AboutSection() {
           </p>
           <h2
             id="about-title"
-            className="text-3xl leading-none font-bold text-maroon-700 dark:text-soft-pink-200"
+            className="text-3xl leading-none font-bold text-primary-saturated"
           >
             {t.rich("title", {
               highlight: (chunks) => (
@@ -44,15 +43,13 @@ export function AboutSection() {
               ),
             })}
           </h2>
-          <p className="leading-none text-soft dark:text-muted">
-            {t("description")}
-          </p>
+          <p className="leading-none text-soft">{t("description")}</p>
         </div>
 
         <Link
           href="/products"
           className={cn(
-            "flex items-center gap-2.5 rounded-xl bg-maroon-600 px-4 py-2.5 leading-none text-white transition-opacity hover:opacity-90 dark:bg-soft-pink-200 dark:text-zinc-800",
+            "flex items-center gap-2.5 rounded-xl bg-primary-saturated px-4 py-2.5 leading-none text-inverse transition-opacity hover:opacity-90",
             FOCUS_RING_CLASS_NAME,
           )}
         >
@@ -66,8 +63,9 @@ export function AboutSection() {
               <span className="flex size-10.5 shrink-0 items-center justify-center">
                 <Check
                   aria-hidden="true"
+                  size={20}
                   absoluteStrokeWidth
-                  className="size-5 text-maroon-700 dark:text-soft-pink-400"
+                  className="text-primary-saturated"
                 />
               </span>
               {t(key)}

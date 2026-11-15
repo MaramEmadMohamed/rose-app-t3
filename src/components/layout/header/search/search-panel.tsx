@@ -25,7 +25,7 @@ export function SearchPanel({ id, searchTerm, onSelect }: SearchPanelProps) {
       className="absolute inset-x-0 top-full z-40 overflow-hidden rounded-b-3xl bg-plain shadow-soft-lg"
     >
       {!searchTerm && (
-        <p className="border-b border-subtle px-2.5 py-3 leading-none font-semibold text-maroon-700 dark:text-soft-pink-200">
+        <p className="border-b border-subtle px-2.5 py-3 leading-none font-semibold text-primary-saturated">
           {t("searchSuggestionsTitle")}
         </p>
       )}

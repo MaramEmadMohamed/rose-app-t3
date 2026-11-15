@@ -1,5 +1,3 @@
-// Each id is also the prefix of the slide's texts in the "Hero" messages,
-// e.g. "flowersTitle", "flowersSubtitle" and "flowersAction".
 export const HERO_SLIDES = [
   { id: "flowers", image: "/images/home/hero-flowers.jpg", href: "/products" },
   {

@@ -9,7 +9,6 @@ function escapeRegExp(text: string) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-// Colors every part of `text` that matches `highlight`, ignoring case.
 export function HighlightedText({ text, highlight }: HighlightedTextProps) {
   // Variables
   const searchTerm = highlight.trim();
@@ -21,10 +20,7 @@ export function HighlightedText({ text, highlight }: HighlightedTextProps) {
 
   return parts.map((part, index) =>
     index % 2 === 1 ? (
-      <mark
-        key={index}
-        className="bg-transparent text-maroon-600 dark:text-soft-pink-200"
-      >
+      <mark key={index} className="bg-transparent text-primary-saturated">
         {part}
       </mark>
     ) : (

@@ -2,13 +2,11 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-// Corner sizes from the design: only the top-start corner is less rounded.
 const GIFT_SHAPE_CLASS_NAME =
   "rounded-ss-[50px] rounded-se-[120px] rounded-ee-[120px] rounded-es-[120px]";
 
-// The three photos of the About section, placed like the design (530 x 377).
-// Positions are percentages of the design sizes, so the group scales down
-// on small screens without changing its shape.
+// Positions are percentages of the design (530 x 377), so the group keeps its
+// shape when it shrinks on small screens.
 export function AboutImages() {
   return (
     <div className="mx-auto flex w-full max-w-132.5 items-center gap-2">

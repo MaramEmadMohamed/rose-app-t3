@@ -6,8 +6,6 @@ import {
   SUGGESTED_PRODUCTS_LIMIT,
 } from "@/lib/constants/search";
 
-// Empty search term: "Products you may like" (the most wishlisted products).
-// Otherwise: the products whose title matches the search term.
 export function useProductSearch(searchTerm: string) {
   return useQuery({
     queryKey: ["products", "search", searchTerm],
@@ -19,7 +17,6 @@ export function useProductSearch(searchTerm: string) {
             sortOrder: "desc",
             limit: SUGGESTED_PRODUCTS_LIMIT,
           }),
-    // Keep the last list on screen while the next one loads.
     placeholderData: keepPreviousData,
   });
 }

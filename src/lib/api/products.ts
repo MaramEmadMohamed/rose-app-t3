@@ -49,7 +49,6 @@ export async function getProducts({
   return response.payload.data;
 }
 
-// The API sends the original price and the discount separately.
 export function getFinalPrice({ price, discountType, discountValue }: Product) {
   const originalPrice = Number(price);
   const discount = Number(discountValue ?? 0);
