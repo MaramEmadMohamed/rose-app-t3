@@ -32,11 +32,10 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
     setUnavailable(false);
 
     try {
-      const response = await fetch("/api/most-popular", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ occasionId }),
-      });
+      const query = new URLSearchParams();
+      if (occasionId) query.set("occasionId", occasionId);
+
+      const response = await fetch(`/api/most-popular?${query.toString()}`);
 
       if (!response.ok) throw new Error("Unable to load products.");
 

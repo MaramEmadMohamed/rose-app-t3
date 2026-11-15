@@ -1,6 +1,7 @@
 import { getBestSelling } from "../api/get-best-selling";
 import BestSellingCarousel from "./best-selling-carousel";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default async function BestSelling() {
   const products = await getBestSelling();
@@ -29,13 +30,13 @@ export default async function BestSelling() {
             leave a lasting impression.
           </p>
 
-          <button
-            type="button"
+          <Link
+            href="/products"
             className="mt-7 inline-flex items-center gap-2 rounded-md bg-[#b52832] px-4 py-2 text-[11px] font-medium text-white transition-opacity hover:opacity-90 dark:bg-[#f6b4c3] dark:text-[#6f2029]"
           >
             Explore gifts
             <ArrowRight size={14} />
-          </button>
+          </Link>
         </div>
 
         <div className="min-w-0">

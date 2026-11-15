@@ -1,5 +1,6 @@
 import "server-only";
 
+import { API_URL } from "@/lib/api-url";
 import { MOST_POPULAR_LABELS, type MostPopularTab } from "../constants";
 
 interface Occasion {
@@ -14,13 +15,12 @@ interface OccasionsResponse {
 }
 
 export async function getMostPopularTabs(): Promise<MostPopularTab[]> {
-  const apiBaseUrl = process.env.API_URL?.trim();
-  if (!apiBaseUrl) {
+  if (!API_URL) {
     return MOST_POPULAR_LABELS.map((label) => ({ label, occasionId: null }));
   }
 
   try {
-    const url = new URL("/api/occasions", apiBaseUrl);
+    const url = new URL("/api/occasions", API_URL);
     url.searchParams.set("page", "1");
     url.searchParams.set("limit", "100");
 

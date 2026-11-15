@@ -1,14 +1,14 @@
 import "server-only";
 
+import { API_URL } from "@/lib/api-url";
 import type { Testimonial, TestimonialsResponse } from "../types";
 
 
 export async function getTestimonials(): Promise<Testimonial[]> {
-  const apiBaseUrl = process.env.API?.trim();
-  if (!apiBaseUrl) return [];
+  if (!API_URL) return [];
 
   try {
-    const url = new URL("/api/testimonials", apiBaseUrl);
+    const url = new URL("/api/testimonials", API_URL);
     const response = await fetch(url, { next: { revalidate: 3600 } });
 
     if (!response.ok) return [];

@@ -1,18 +1,20 @@
 import "server-only";
 
+import { API_URL } from "@/lib/api-url";
 import type { Product, ProductsResponse } from "../../best-selling/types";
 import { MOST_POPULAR_LIMIT } from "../constants";
 
 export async function getProductsForOccasion(
   occasionId?: string,
 ): Promise<Product[]> {
-  const apiBaseUrl = process.env.API_URL?.trim();
-  if (!apiBaseUrl) return [];
+  if (!API_URL) return [];
 
   try {
-    const url = new URL("/api/products", apiBaseUrl);
+    const url = new URL("/api/products", API_URL);
     url.searchParams.set("page", "1");
     url.searchParams.set("limit", String(MOST_POPULAR_LIMIT));
+    url.searchParams.set("sortBy", "mostPopular");
+    url.searchParams.set("sortOrder", "desc");
 
     if (occasionId) url.searchParams.set("occasionId", occasionId);
 
