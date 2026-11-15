@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { ShoppingCart, Star } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import type { Product } from "../types";
 
 interface BestSellingCardProps {
@@ -30,8 +33,8 @@ function getDiscountedPrice(product: Product) {
   return price;
 }
 
-function formatPrice(price: number) {
-  return new Intl.NumberFormat("en-EG", {
+function formatPrice(price: number, locale: string) {
+  return new Intl.NumberFormat(locale === "ar" ? "ar-EG" : "en-EG", {
     maximumFractionDigits: 2,
   }).format(price);
 }
@@ -40,6 +43,8 @@ export default function BestSellingCard({
   product,
   isHot = false,
 }: BestSellingCardProps) {
+  const locale = useLocale();
+  const t = useTranslations("ProductCard");
   // Variables
   const discountedPrice = getDiscountedPrice(product);
 
@@ -62,16 +67,16 @@ export default function BestSellingCard({
           />
         )}
 
-        <div className="absolute left-2 right-2 top-2 flex flex-wrap items-start justify-end gap-1">
+        <div className="absolute inset-x-2 top-2 flex flex-wrap items-start justify-end gap-1">
           {isHot && (
             <span className="rounded-full bg-[#ed6675] px-2 py-0.5 text-[9px] font-semibold text-white">
-              HOT
+              {t("hot")}
             </span>
           )}
 
           {isOutOfStock && (
             <span className="rounded-full bg-[#e84242] px-2 py-0.5 text-[9px] font-semibold text-white">
-              OUT OF STOCK
+              {t("outOfStock")}
             </span>
           )}
         </div>
@@ -84,7 +89,7 @@ export default function BestSellingCard({
 
         <div
           className="flex items-center gap-1"
-          aria-label={`Rated ${product.rating} out of 5`}
+          aria-label={t("rating", { rating: product.rating })}
         >
           <span className="flex items-center" aria-hidden="true">
             {Array.from({ length: 5 }, (_, index) => (
@@ -104,19 +109,19 @@ export default function BestSellingCard({
         <div className="flex flex-wrap items-center text-[16px] font-semibold gap-1.5 ">
           {discountedPrice !== null && (
             <span className="font-semibold text-[#8e252c] dark:text-[#ff9eae]">
-              {formatPrice(discountedPrice)} EGP
+              {formatPrice(discountedPrice, locale)} {t("currency")}
             </span>
           )}
 
           {hasDiscount && (
             <span className="text-muted-foreground line-through dark:text-[#aaa2a5]">
-              {formatPrice(Number(product.price))} EGP
+              {formatPrice(Number(product.price), locale)} {t("currency")}
             </span>
           )}
           <button
             type="button"
-            aria-label={`Add ${product.title} to cart`}
-            className="ml-auto inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[#b52832] text-white shadow-sm transition-colors hover:bg-[#9f2029]"
+            aria-label={t("addToCart", { title: product.title })}
+            className="ms-auto inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-[#b52832] text-white shadow-sm transition-colors hover:bg-[#9f2029]"
           >
             <ShoppingCart size={20} aria-hidden="true" />
           </button>

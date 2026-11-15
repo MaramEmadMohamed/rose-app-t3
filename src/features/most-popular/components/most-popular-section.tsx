@@ -1,20 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Link from "next/link";
+import { useRef, useState, type ReactNode } from "react";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import BestSellingCard from "../../best-selling/components/best-selling-card";
 import type { Product } from "../../best-selling/types";
 import type { MostPopularTab } from "../constants";
-import Heading from "@/features/home/components/section-heading";
 
 interface Props {
   tabs: MostPopularTab[];
   initialTab: string;
   initialProducts: Product[];
+  heading?: ReactNode;
 }
 
-export default function MostPopularSection({ tabs, initialTab, initialProducts }: Props) {
+export default function MostPopularSection({ tabs, initialTab, initialProducts, heading }: Props) {
+  const t = useTranslations("MostPopular");
   // State
   const [activeTab, setActiveTab] = useState(initialTab);
   const [products, setProducts] = useState(initialProducts);
@@ -59,7 +61,7 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-10 lg:px-6">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-        <Heading label="" title="Most " highlight="Popular" />
+        {heading}
 
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           {tabs.map((tab) => (
@@ -74,7 +76,7 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
                   : "text-muted-foreground"
               }`}
             >
-              {tab.label}
+              {t(`occasions.${tab.label}`)}
             </button>
           ))}
         </div>
@@ -83,7 +85,7 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
       {isLoading ? (
         <div
           className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-4"
-          aria-label="Loading products"
+          aria-label={t("loading")}
           aria-busy="true"
         >
           {Array.from({ length: 12 }, (_, index) => (
@@ -99,8 +101,8 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
       ) : (
         <p className="py-16 text-center text-sm text-muted-foreground">
           {unavailable
-            ? `${activeTab} products are not available in the API yet.`
-            : `No products found for ${activeTab}.`}
+            ? t("unavailable", { category: t(`occasions.${activeTab}`) })
+            : t("empty", { category: t(`occasions.${activeTab}`) })}
         </p>
       )}
 
@@ -109,7 +111,7 @@ export default function MostPopularSection({ tabs, initialTab, initialProducts }
           href="/products"
           className="inline-flex items-center gap-2 text-xs font-semibold text-[#8e252c] underline-offset-4 hover:underline dark:text-[#ff9eae]"
         >
-          View More <ArrowRight size={14} aria-hidden="true" />
+          {t("viewMore")} <ArrowRight size={14} aria-hidden="true" />
         </Link>
       </div>
     </section>

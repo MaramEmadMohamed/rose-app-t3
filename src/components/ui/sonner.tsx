@@ -50,7 +50,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           description: "!text-sm",
 
           closeButton:
-            "!absolute  !right-3 !left-auto !top-1/2 !-translate-y-1/2 !rounded-full !border-0 !bg-transparent !p-1 !text-neutral-500 hover:!bg-black/5 dark:!text-neutral-400 dark:hover:!bg-white/10",
+            "!absolute !end-3 !start-auto !top-1/2 !-translate-y-1/2 !rounded-full !border-0 !bg-transparent !p-1 !text-neutral-500 hover:!bg-black/5 dark:!text-neutral-400 dark:hover:!bg-white/10",
 
           info:
             "!border-neutral-200 !bg-[#f4f4f5] !text-neutral-900 dark:!border-zinc-800 dark:!bg-[#18181b] dark:!text-white",

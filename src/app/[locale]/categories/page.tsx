@@ -1,4 +1,5 @@
-import { redirect } from "next/navigation";
+import { redirect } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
 import { getCategories } from "@/services/categories";
 import { PaginationControls } from "@/components/ui/pagination";
@@ -9,6 +10,7 @@ type SearchParams = Promise<{
 
 type CategoriesPageProps = {
   searchParams: SearchParams;
+  params: Promise<{ locale: string }>;
 };
 
 const DEFAULT_PAGE = 1;
@@ -33,7 +35,10 @@ function getValidPositiveInteger(
 
 export default async function CategoriesPage({
   searchParams,
+  params: routeParams,
 }: CategoriesPageProps) {
+  const { locale } = await routeParams;
+  const t = await getTranslations("Categories");
   const params = await searchParams;
 
   const page = getValidPositiveInteger(
@@ -59,7 +64,7 @@ export default async function CategoriesPage({
     correctedParams.set("page", String(totalPages));
     correctedParams.set("limit", String(limit));
 
-    redirect(`/categories?${correctedParams.toString()}`);
+    redirect({ href: `/categories?${correctedParams.toString()}`, locale });
   }
 
   // Correct missing or invalid query parameters.
@@ -75,7 +80,7 @@ export default async function CategoriesPage({
     correctedParams.set("page", String(page));
     correctedParams.set("limit", String(limit));
 
-    redirect(`/categories?${correctedParams.toString()}`);
+    redirect({ href: `/categories?${correctedParams.toString()}`, locale });
   }
 
   function createPageUrl(targetPage: number) {
@@ -95,22 +100,22 @@ export default async function CategoriesPage({
     queryParams.set("page", String(targetPage));
     queryParams.set("limit", String(limit));
 
-    return `/categories?${queryParams.toString()}`;
+    return `/${locale}/categories?${queryParams.toString()}`;
   }
 
   return (
     <main className="p-6">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Categories</h1>
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
 
         <p className="mt-2 text-sm text-muted-foreground">
-          Total categories: {metadata.total}
+          {t("total", { total: metadata.total })}
         </p>
       </div>
 
       {categories.length === 0 ? (
         <p className="py-10 text-center text-muted-foreground">
-          No categories found.
+          {t("empty")}
         </p>
       ) : (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -132,11 +137,11 @@ export default async function CategoriesPage({
               </h2>
 
               <p className="mt-2 text-sm text-muted-foreground">
-                {category.description || "No description"}
+                  {category.description || t("noDescription")}
               </p>
 
               <p className="mt-3 text-xs text-muted-foreground">
-                Products: {category._count.products}
+                {t("products", { count: category._count.products })}
               </p>
             </article>
           ))}

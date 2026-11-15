@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import type { Testimonial } from "../types";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
-  const date = new Intl.DateTimeFormat("en-US", {
+  const locale = useLocale();
+  const t = useTranslations("Testimonials");
+  const date = new Intl.DateTimeFormat(locale === "ar" ? "ar-EG" : "en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -36,7 +39,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
       <div
         className="mt-9.5 mb-2.5 flex items-center justify-center"
-        aria-label={`Rated ${testimonial.rating} out of 5`}
+        aria-label={t("rating", { rating: testimonial.rating })}
       >
         {Array.from({ length: 5 }, (_, index) => (
           <Star
@@ -73,9 +76,11 @@ export default function TestimonialsCarousel({
 }) {
   if (!testimonials.length) return null;
 
+  const t = useTranslations("Testimonials");
+
   return (
     <section
-      aria-label="Customer testimonials"
+      aria-label={t("carouselLabel")}
       className="overflow-hidden bg-[#fbedef] dark:bg-[rgb(63,63,70)] md:py-12"
     >
       <div className="mx-auto w-full max-w-334 overflow-hidden">
