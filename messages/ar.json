@@ -142,5 +142,30 @@
     "featureQuality": "جودة عالية وتغليف أنيق",
     "featureOccasions": "مناسبة لكل المناسبات",
     "featureDelivery": "توصيل سريع وموثوق"
+  },
+
+  "Wishlist": {
+    "title": "المفضلة",
+    "count": "{count, plural, zero {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجًا} other {# منتج}}",
+    "clear": "مسح المفضلة",
+    "clearQuestion": "هل أنت متأكد أنك تريد مسح قائمة المفضلة؟",
+    "clearConfirm": "مسح",
+    "cancel": "إلغاء",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "rating": "{rating}/5",
+    "ratingsCount": "({count, plural, zero {لا توجد تقييمات} one {تقييم واحد} two {تقييمان} few {# تقييمات} many {# تقييمًا} other {# تقييم}})",
+    "currency": "ج.م",
+    "removeItem": "إزالة {title} من المفضلة",
+    "addToCart": "أضف إلى السلة",
+    "exploreSimilar": "تصفح منتجات مشابهة",
+    "continueShopping": "متابعة التسوق",
+    "add": "أضف إلى المفضلة",
+    "remove": "إزالة من المفضلة",
+    "loginRequired": "سجّل الدخول لحفظ المنتجات في المفضلة.",
+    "loading": "جاري تحميل المفضلة...",
+    "error": "تعذّر تحميل المفضلة. حاول مرة أخرى.",
+    "empty": "قائمة المفضلة فارغة.",
+    "actionError": "حدث خطأ ما. حاول مرة أخرى."
   }
 }

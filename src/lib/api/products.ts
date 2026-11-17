@@ -12,6 +12,7 @@ export type Product = {
   ratings: number;
   stock: number;
   cover: string;
+  categoryId: string;
 };
 
 export type ProductsSortBy =

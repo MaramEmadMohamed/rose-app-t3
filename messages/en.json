@@ -142,5 +142,30 @@
     "featureQuality": "Premium Quality & Elegant Packaging",
     "featureOccasions": "Perfect for Every Occasion",
     "featureDelivery": "Fast & Reliable Delivery"
+  },
+
+  "Wishlist": {
+    "title": "Wishlist",
+    "count": "{count, plural, one {# item} other {# items}}",
+    "clear": "Clear Wishlist",
+    "clearQuestion": "Are you sure you want to clear your Wishlist?",
+    "clearConfirm": "Clear",
+    "cancel": "Cancel",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "rating": "{rating}/5",
+    "ratingsCount": "({count, plural, one {# rating} other {# ratings}})",
+    "currency": "EGP",
+    "removeItem": "Remove {title} from the wishlist",
+    "addToCart": "Add to Cart",
+    "exploreSimilar": "Explore Similar Products",
+    "continueShopping": "Continue Shopping",
+    "add": "Add to Wishlist",
+    "remove": "Remove from Wishlist",
+    "loginRequired": "Log in to save products to your wishlist.",
+    "loading": "Loading your wishlist...",
+    "error": "We couldn't load your wishlist. Please try again.",
+    "empty": "Your wishlist is empty.",
+    "actionError": "Something went wrong. Please try again."
   }
 }
