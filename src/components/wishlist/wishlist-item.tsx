@@ -38,7 +38,7 @@ export function WishlistItem({ item }: { item: WishlistItemData }) {
         width={117}
         height={140}
         className={cn(
-          "h-35 w-29.25 shrink-0 rounded-lg object-cover",
+          "h-35 w-29.25 shrink-0 rounded-base object-cover",
           !isInStock && "opacity-25",
         )}
       />
@@ -58,7 +58,7 @@ export function WishlistItem({ item }: { item: WishlistItemData }) {
           </h2>
           <p className="flex items-center gap-1.5 py-0.5 text-sm leading-none">
             {/* Fixed colors: the yellow badge keeps dark text in both themes. */}
-            <span className="flex items-center gap-1.5 rounded-lg bg-warning px-1.5 py-1 font-medium text-zinc-800">
+            <span className="flex items-center gap-1.5 rounded-base bg-warning px-1.5 py-1 font-medium text-zinc-800">
               <Star aria-hidden="true" size={16} className="fill-current" />
               {t("rating", {
                 rating: format.number(product.rating, {
@@ -95,7 +95,7 @@ export function WishlistItem({ item }: { item: WishlistItemData }) {
           disabled={remove.isPending}
           aria-label={t("removeItem", { title: product.title })}
           className={cn(
-            "flex size-12 items-center justify-center rounded-lg bg-danger-fade text-danger transition-opacity hover:opacity-80 disabled:opacity-60",
+            "flex h-12 w-13 items-center justify-center rounded-lg bg-danger-fade text-danger transition-opacity hover:opacity-80 disabled:opacity-60",
             FOCUS_RING_CLASS_NAME,
           )}
         >
