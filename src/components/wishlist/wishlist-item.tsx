@@ -20,7 +20,7 @@ export function WishlistItem({ item }: { item: WishlistItemData }) {
   const format = useFormatter();
 
   // Custom hooks
-  const { remove } = useWishlistActions();
+  const { deleteItem } = useWishlistActions();
 
   // Variables
   const { product } = item;
@@ -91,8 +91,8 @@ export function WishlistItem({ item }: { item: WishlistItemData }) {
       <div className="flex w-full items-center justify-between gap-3 sm:w-auto sm:flex-col sm:items-end">
         <button
           type="button"
-          onClick={() => remove.mutate(item.id)}
-          disabled={remove.isPending}
+          onClick={() => deleteItem.mutate(item.id)}
+          disabled={deleteItem.isPending}
           aria-label={t("removeItem", { title: product.title })}
           className={cn(
             "flex h-12 w-13 items-center justify-center rounded-lg bg-danger-fade text-danger transition-opacity hover:opacity-80 disabled:opacity-60",

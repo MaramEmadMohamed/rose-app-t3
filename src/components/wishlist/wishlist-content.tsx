@@ -1,7 +1,8 @@
 "use client";
 
-import { ArrowLeft, FolderHeart, HeartCrack } from "lucide-react";
+import { ArrowLeft, FolderHeart } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 
 import { useWishlist } from "@/hooks/use-wishlist";
 import { Link } from "@/i18n/navigation";
@@ -10,9 +11,21 @@ import { FOCUS_RING_CLASS_NAME } from "@/lib/styles/focus-ring";
 import { cn } from "@/lib/utils";
 
 import { ClearWishlistButton } from "./clear-wishlist-button";
+import { WishlistEmpty } from "./wishlist-empty";
 import { WishlistItem } from "./wishlist-item";
 
-const STATUS_CLASS_NAME = "py-10 text-center text-soft";
+type StatusMessageProps = {
+  role?: "status" | "alert";
+  children: ReactNode;
+};
+
+function StatusMessage({ role, children }: StatusMessageProps) {
+  return (
+    <p role={role} className="py-10 text-center text-soft">
+      {children}
+    </p>
+  );
+}
 
 export function WishlistContent() {
   // Translation
@@ -24,42 +37,13 @@ export function WishlistContent() {
   // Functions
   // The query only runs for a logged-in user, so a guest gets a message.
   function renderItems() {
-    if (!isAuthenticated()) {
-      return <p className={STATUS_CLASS_NAME}>{t("loginRequired")}</p>;
-    }
-
-    if (isPending) {
-      return (
-        <p role="status" className={STATUS_CLASS_NAME}>
-          {t("loading")}
-        </p>
-      );
-    }
-
-    if (isError) {
-      return (
-        <p role="alert" className={STATUS_CLASS_NAME}>
-          {t("error")}
-        </p>
-      );
-    }
-
-    // Same look as the empty cart in the design: there is no empty wishlist frame.
-    if (items.length === 0) {
-      return (
-        <div className="flex h-98.75 flex-col items-center justify-center gap-4 rounded-md border border-muted p-5">
-          <HeartCrack
-            aria-hidden="true"
-            size={120}
-            strokeWidth={1}
-            className="text-muted"
-          />
-          <p className="text-center text-lg leading-none text-muted">
-            {t("empty")}
-          </p>
-        </div>
-      );
-    }
+    if (!isAuthenticated())
+      return <StatusMessage>{t("loginRequired")}</StatusMessage>;
+    if (isPending)
+      return <StatusMessage role="status">{t("loading")}</StatusMessage>;
+    if (isError)
+      return <StatusMessage role="alert">{t("error")}</StatusMessage>;
+    if (items.length === 0) return <WishlistEmpty />;
 
     return (
       <ul className="flex flex-col gap-5">

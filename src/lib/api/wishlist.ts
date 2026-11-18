@@ -28,7 +28,7 @@ export function addToWishlist(productId: string) {
   });
 }
 
-export function removeFromWishlist(itemId: string) {
+export function deleteWishlistItemById(itemId: string) {
   return requestApi(`${WISHLIST_PATH}/${itemId}`, { method: "DELETE" });
 }
 

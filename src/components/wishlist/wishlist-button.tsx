@@ -19,7 +19,7 @@ export function WishlistButton({ productId }: { productId: string }) {
   const { data: items } = useWishlist();
 
   // Custom hooks
-  const { add, remove } = useWishlistActions();
+  const { add, deleteItem } = useWishlistActions();
 
   // Variables
   const savedItem = items?.find((item) => item.product.id === productId);
@@ -33,7 +33,7 @@ export function WishlistButton({ productId }: { productId: string }) {
       return;
     }
 
-    if (savedItem) remove.mutate(savedItem.id);
+    if (savedItem) deleteItem.mutate(savedItem.id);
     else add.mutate(productId);
   }
 
@@ -41,7 +41,7 @@ export function WishlistButton({ productId }: { productId: string }) {
     <button
       type="button"
       onClick={toggleWishlist}
-      disabled={add.isPending || remove.isPending}
+      disabled={add.isPending || deleteItem.isPending}
       aria-label={label}
       aria-pressed={Boolean(savedItem)}
       className={cn(
