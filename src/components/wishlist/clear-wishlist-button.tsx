@@ -13,7 +13,7 @@ const DIALOG_BUTTON_CLASS_NAME = cn(
   FOCUS_RING_CLASS_NAME,
 );
 
-export function ClearWishlistButton() {
+export function ClearWishlistButton({ disabled }: { disabled: boolean }) {
   // Translation
   const t = useTranslations("Wishlist");
 
@@ -42,8 +42,9 @@ export function ClearWishlistButton() {
       <button
         type="button"
         onClick={openDialog}
+        disabled={disabled}
         className={cn(
-          "flex h-11 items-center gap-2.5 rounded-lg bg-danger px-4 leading-none text-inverse transition-opacity hover:opacity-90",
+          "flex h-11 items-center gap-2.5 rounded-lg bg-danger px-4 leading-none text-inverse transition-opacity hover:opacity-90 disabled:bg-danger-fade disabled:text-danger disabled:hover:opacity-100",
           FOCUS_RING_CLASS_NAME,
         )}
       >

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, FolderHeart } from "lucide-react";
+import { ArrowLeft, FolderHeart, HeartCrack } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { useWishlist } from "@/hooks/use-wishlist";
@@ -44,8 +44,21 @@ export function WishlistContent() {
       );
     }
 
+    // Same look as the empty cart in the design: there is no empty wishlist frame.
     if (items.length === 0) {
-      return <p className={STATUS_CLASS_NAME}>{t("empty")}</p>;
+      return (
+        <div className="flex h-98.75 flex-col items-center justify-center gap-4 rounded-md border border-muted p-5">
+          <HeartCrack
+            aria-hidden="true"
+            size={120}
+            strokeWidth={1}
+            className="text-muted"
+          />
+          <p className="text-center text-lg leading-none text-muted">
+            {t("empty")}
+          </p>
+        </div>
+      );
     }
 
     return (
@@ -74,7 +87,7 @@ export function WishlistContent() {
             </p>
           )}
         </div>
-        {items && items.length > 0 && <ClearWishlistButton />}
+        {items && <ClearWishlistButton disabled={items.length === 0} />}
       </div>
 
       <div className="border-t border-subtle pt-5">{renderItems()}</div>

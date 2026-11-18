@@ -165,7 +165,7 @@
     "loginRequired": "Log in to save products to your wishlist.",
     "loading": "Loading your wishlist...",
     "error": "We couldn't load your wishlist. Please try again.",
-    "empty": "Your wishlist is empty.",
+    "empty": "Your wishlist is empty, wanna try shopping?",
     "actionError": "Something went wrong. Please try again."
   }
 }
