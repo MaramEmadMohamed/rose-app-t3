@@ -86,7 +86,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
-        <Field invalid={Boolean(errors.password)}>
+        <Field data-invalid={Boolean(errors.password)}>
           <Label htmlFor="reset-password">{t("password")}</Label>
           <Input
             id="reset-password"
@@ -108,7 +108,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
           )}
         </Field>
 
-        <Field invalid={Boolean(errors.confirmPassword)}>
+        <Field data-invalid={Boolean(errors.confirmPassword)}>
           <Label htmlFor="reset-confirm-password">{t("confirmPassword")}</Label>
           <Input
             id="reset-confirm-password"

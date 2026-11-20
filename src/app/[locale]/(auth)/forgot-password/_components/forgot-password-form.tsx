@@ -73,7 +73,7 @@ export function ForgotPasswordForm({
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-6"
       >
-        <Field invalid={Boolean(errors.email)}>
+        <Field data-invalid={Boolean(errors.email)}>
           <Label htmlFor="forgot-email">{t("email")}</Label>
           <Input
             id="forgot-email"

@@ -78,7 +78,7 @@ export function LoginForm() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-4"
       >
-        <Field invalid={Boolean(errors.username)}>
+        <Field data-invalid={Boolean(errors.username)}>
           <Label htmlFor="login-username">{t("username")}</Label>
           <Input
             id="login-username"
@@ -97,7 +97,7 @@ export function LoginForm() {
           )}
         </Field>
 
-        <Field invalid={Boolean(errors.password)}>
+        <Field data-invalid={Boolean(errors.password)}>
           <Label htmlFor="login-password">{t("password")}</Label>
           <Input
             id="login-password"
