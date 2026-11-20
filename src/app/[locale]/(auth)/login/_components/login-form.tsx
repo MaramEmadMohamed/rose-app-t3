@@ -4,17 +4,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
+import { AuthTitle } from "@/components/auth/auth-title";
 import { Button } from "@/components/ui/button";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useLogin } from "@/hooks/use-login";
 import { Link, useRouter } from "@/i18n/navigation";
-import { loginSchema, type LoginValues } from "@/lib/schemas/login-schema";
 import { LOGIN_ERROR_CODE } from "@/lib/auth/auth-errors";
-import { AuthTitle } from "@/components/auth/auth-title";
+import { loginSchema, type LoginValues } from "@/lib/schemas/login-schema";
 
 type LoginMessageKey = "usernameRequired" | "passwordRequired";
+type LoginRootMessageKey = "invalidCredentials" | "serverError";
+
+const LOGIN_ERROR_MESSAGE_KEY: Record<string, LoginRootMessageKey> = {
+  [LOGIN_ERROR_CODE.INVALID_CREDENTIALS]: "invalidCredentials",
+  [LOGIN_ERROR_CODE.SERVICE_UNAVAILABLE]: "serverError",
+};
 
 export function LoginForm() {
   // Translation
@@ -43,24 +49,16 @@ export function LoginForm() {
     LoginMessageKey | undefined;
   const passwordMessage = errors.password?.message as
     LoginMessageKey | undefined;
+  const rootMessage = errors.root?.message as LoginRootMessageKey | undefined;
 
   // Functions
-
-  const LOGIN_ERROR_MESSAGE_KEY = {
-    [LOGIN_ERROR_CODE.INVALID_CREDENTIALS]: "invalidCredentials",
-    [LOGIN_ERROR_CODE.SERVICE_UNAVAILABLE]: "serverError",
-  } as const;
-
-  // داخل الـ component
   function onSubmit(values: LoginValues) {
     clearErrors("root");
     login(values, {
       onSuccess: (result) => {
         if (!result.success) {
           const key =
-            LOGIN_ERROR_MESSAGE_KEY[
-              result.code as keyof typeof LOGIN_ERROR_MESSAGE_KEY
-            ] ?? "serverError";
+            LOGIN_ERROR_MESSAGE_KEY[result.code ?? ""] ?? "serverError";
           setError("root", { message: key });
           return;
         }
@@ -128,9 +126,9 @@ export function LoginForm() {
           {t("forgotPassword")}
         </Link>
 
-        {errors.root && (
+        {rootMessage && (
           <p role="alert" className="text-danger text-center text-sm">
-            {t("invalidCredentials")}
+            {t(rootMessage)}
           </p>
         )}
 

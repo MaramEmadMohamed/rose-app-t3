@@ -4,7 +4,6 @@ import { ChevronLeft } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AuthHeading } from "@/components/auth/auth-heading";
-import { Link } from "@/i18n/navigation";
 
 type ResetLinkSentProps = {
   email: string;
@@ -51,12 +50,7 @@ export function ResetLinkSent({ email, onEdit }: ResetLinkSentProps) {
 
       <p className="border-soft border-t pt-4 text-center text-sm">
         {t("needHelp")}{" "}
-        <Link
-          href="/contact"
-          className="text-primary font-semibold hover:underline"
-        >
-          {t("contactUs")}
-        </Link>
+        <span className="text-primary font-semibold">{t("contactUs")}</span>
       </p>
     </div>
   );

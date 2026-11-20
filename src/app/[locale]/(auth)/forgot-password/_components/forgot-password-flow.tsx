@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { ForgotPasswordForm } from "./forgot-password-form";
 import { ResetPasswordForm } from "./reset-password-form";
-import { ResetLinkSent } from "./rest-link-sent";
+import { ResetLinkSent } from "./reset-link-sent";
 
 type Step = "email" | "sent";
 

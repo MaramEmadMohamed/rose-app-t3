@@ -11,7 +11,7 @@ import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useResetPassword } from "@/hooks/use-reset-password";
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import {
   resetPasswordSchema,
   type ResetPasswordValues,
@@ -143,12 +143,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
       <p className="border-soft border-t pt-4 text-center text-sm">
         {t("needHelp")}{" "}
-        <Link
-          href="/contact"
-          className="text-primary font-semibold hover:underline"
-        >
-          {t("contactUs")}
-        </Link>
+        <span className="text-primary font-semibold">{t("contactUs")}</span>
       </p>
     </div>
   );
