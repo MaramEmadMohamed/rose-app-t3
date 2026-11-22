@@ -1,0 +1,58 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
+import { routing } from "@/i18n/routing";
+import { sarabun, tajawal } from "@/lib/fonts";
+import { AuthProvider } from "@/components/providers/session-provider";
+import "../globals.css";
+
+export const metadata: Metadata = {
+  title: "Rose App",
+  description: "Rose App",
+};
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
+
+  const dir = locale === "ar" ? "rtl" : "ltr";
+
+  return (
+    <html
+      lang={locale}
+      dir={dir}
+      className={`${sarabun.variable} ${tajawal.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="flex min-h-full flex-col">
+        <NextIntlClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <QueryProvider>
+              <AuthProvider>{children}</AuthProvider>
+            </QueryProvider>
+            <Toaster  position="top-center" dir={dir} />
+          </ThemeProvider>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
