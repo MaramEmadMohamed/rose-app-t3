@@ -14,17 +14,17 @@
     "title": "أهلاً بك في تطبيق روز",
     "description": "مشروع الواجهة الأمامية الحديث الخاص بك."
   },
- "UserMenu": {
-  "hello": "مرحباً",
-  "account": "حسابي",
-  "addresses": "العناوين",
-  "orders": "الطلبات",
-  "dashboard": "لوحة التحكم",
-  "logout": "تسجيل الخروج"
-}
-,
+  "UserMenu": {
+    "hello": "مرحباً",
+    "account": "حسابي",
+    "addresses": "العناوين",
+    "orders": "الطلبات",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
   "register": {
     "title": "كوني جزءًا من عائلتنا!",
+    "logoAlt": "شعار تطبيق روز",
     "stepperLabel": "مراحل التسجيل",
     "createAccount": "إنشاء حساب",
     "next": "التالي",
@@ -52,12 +52,20 @@
       "username": "اسم المستخدم",
       "phone": "رقم الهاتف",
       "gender": "النوع",
-      "genderPlaceholder": "اختر النوع",
+      "genderRequired": "اختر النوع",
       "male": "ذكر",
       "female": "أنثى",
       "countryLabel": "الدولة",
       "searchCountryLabel": "ابحث عن دولة",
-      "noCountryLabel": "لا توجد نتائج"
+      "noCountryLabel": "لا توجد نتائج",
+      "firstNamePlaceholder": "زوي",
+      "lastNamePlaceholder": "جوناثان",
+      "usernamePlaceholder": "zoe123",
+      "genderPlaceholder": "اختاري النوع"
+    },
+    "help": {
+      "text": "تحتاجين مساعدة؟",
+      "contact": "تواصلي معنا"
     },
     "password": {
       "subtitle": "أنشئ كلمة مرور قوية",
@@ -71,7 +79,7 @@
     "done": {
       "title": "تم إنشاء حسابك 🎉",
       "subtitle": "أهلًا بك في عائلتنا!",
-      "login": "تسجيل الدخول"
+      "continue": "متابعة"
     },
     "validation": {
       "emailRequired": "البريد الإلكتروني مطلوب",
@@ -86,8 +94,8 @@
       "passwordUpper": "حرف كبير واحد على الأقل",
       "passwordNumber": "رقم واحد على الأقل",
       "passwordMismatch": "كلمتا المرور غير متطابقتين"
-    }
+    },
+    "resend": "إرسال رمز جديد",
+    "common": { "switchLanguage": " العربية" }
   }
-
-
 }

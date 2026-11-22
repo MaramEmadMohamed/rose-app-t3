@@ -25,7 +25,9 @@ export const createProfileSchema = (t: Translate) =>
       .min(3, t("validation.usernameShort"))
       .regex(/^[a-zA-Z0-9_.]+$/, t("validation.usernameInvalid")),
     phone: z.string().regex(/^\+?[0-9]{10,15}$/, t("validation.phoneInvalid")),
-    gender: z.enum(["male", "female"], { message: t("validation.genderRequired") }),
+    gender: z.enum(["MALE", "FEMALE"], {
+      message: t("profile.genderRequired"),
+    }),
   });
 
 export const createPasswordSchema = (t: Translate) =>

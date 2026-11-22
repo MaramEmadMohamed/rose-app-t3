@@ -1,4 +1,5 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { STEPS, Step } from "./register-context";
@@ -19,8 +20,8 @@ export function Stepper({ current }: { current: Step }) {
             className={cn(
               "flex size-5 items-center justify-center rounded-full text-[10px] font-medium",
               i <= index
-                ? "bg-[#521118] text-white"
-                : "bg-[#f5dede] text-[#7a1b1f]",
+                ? "bg-primary text-primary-foreground"
+                : "bg-primary-fade text-primary",
             )}
           >
             {i + 1}
@@ -29,7 +30,7 @@ export function Stepper({ current }: { current: Step }) {
             <span
               className={cn(
                 "h-px w-8 sm:w-12",
-                i < index ? "bg-[#521118]" : "bg-[#f0cfcf]",
+                i < index ? "bg-primary" : "bg-primary-faint",
               )}
             />
           )}

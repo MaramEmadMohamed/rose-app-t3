@@ -24,6 +24,7 @@
   },
   "register": {
     "title": "Become part of our family!",
+    "logoAlt": "Rose App logo",
     "stepperLabel": "Registration progress",
     "createAccount": "Create Account",
     "next": "Next",
@@ -35,15 +36,15 @@
       "login": "Login"
     },
     "otp": {
-  "subtitle": "Enter the OTP Code",
-  "sentTo": "We have sent a 6-digit code to",
-  "edit": "Edit",
-  "verify": "Verify Code",
-  "verifying": "Verifying...",
-  "resend": "Send a new code",
-  "resendIn": "Resend code in",
-  "resent": "A new code has been sent"
-},
+      "subtitle": "Enter the OTP Code",
+      "sentTo": "We have sent a 6-digit code to",
+      "edit": "Edit",
+      "verify": "Verify Code",
+      "verifying": "Verifying...",
+      "resend": "Send a new code",
+      "resendIn": "Resend code in",
+      "resent": "A new code has been sent"
+    },
     "profile": {
       "subtitle": "Tell us more about you.",
       "hint": "A few details to get started",
@@ -52,12 +53,20 @@
       "username": "Username",
       "phone": "Phone",
       "gender": "Gender",
-      "genderPlaceholder": "Select gender",
+      "genderRequired": "Please select your gender",
       "male": "Male",
       "female": "Female",
       "countryLabel": "Country",
       "searchCountryLabel": "Search country",
-      "noCountryLabel": "No country found"
+      "noCountryLabel": "No country found",
+      "firstNamePlaceholder": "Zoe",
+      "lastNamePlaceholder": "Jonathan",
+      "usernamePlaceholder": "zoe123",
+      "genderPlaceholder": "Select gender"
+    },
+    "help": {
+      "text": "Need help?",
+      "contact": "Contact us"
     },
     "password": {
       "subtitle": "Create a strong password",
@@ -71,7 +80,7 @@
     "done": {
       "title": "Your account has been created 🎉",
       "subtitle": "Welcome to the family!",
-      "login": "Login"
+      "continue": "Continue"
     },
     "validation": {
       "emailRequired": "Email is required",
@@ -86,6 +95,7 @@
       "passwordUpper": "One uppercase letter",
       "passwordNumber": "One number",
       "passwordMismatch": "Passwords do not match"
-    }
+    },
+    "common": { "switchLanguage": "English" }
   }
 }

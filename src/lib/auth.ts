@@ -14,20 +14,29 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: credentials.email,
-            password: credentials.password,
-          }),
-        });
+        try {
+          const res = await fetch(`${process.env.API_URL}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: credentials.email,
+              password: credentials.password,
+            }),
+            cache: "no-store",
+          });
 
-        const data = await res.json().catch(() => null);
-        if (!res.ok || data?.status === false) return null;
+          const data = await res.json().catch(() => null);
+          if (!res.ok || data?.status === false) return null;
 
-        const { user, token } = data.payload;
-        return { ...user, id: String(user.id ?? user._id ?? credentials.email), token };
+          const { user, token } = data.payload;
+          return {
+            ...user,
+            id: String(user.id ?? user._id ?? credentials.email),
+            token,
+          };
+        } catch {
+          return null;
+        }
       },
     }),
   ],
@@ -37,7 +46,8 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      (session as { accessToken?: string }).accessToken = token.accessToken as string;
+      (session as { accessToken?: string }).accessToken =
+        token.accessToken as string;
       return session;
     },
   },

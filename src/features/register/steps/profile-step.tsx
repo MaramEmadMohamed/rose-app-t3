@@ -1,8 +1,10 @@
 "use client";
+
 import { useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -15,6 +17,8 @@ import {
 } from "@/components/ui/select";
 import { createProfileSchema, ProfileValues } from "../register.schema";
 import { useRegister } from "../register-context";
+import { StepHeader } from "../steps/step-header";
+import { HelpFooter } from "../help-footer";
 
 export function ProfileStep() {
   const t = useTranslations("register");
@@ -41,19 +45,22 @@ export function ProfileStep() {
     update({ profile: values, step: "password" });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
-      <div>
-        <h2 className="text-lg font-semibold">{t("createAccount")}</h2>
-        <p className="text-sm">{t("profile.subtitle")}</p>
-        <p className="text-muted-foreground text-xs">{t("profile.hint")}</p>
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+      <StepHeader title={t("createAccount")} subtitle={t("profile.subtitle")}>
+        {t("profile.hint")}
+      </StepHeader>
 
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
-          <Label htmlFor="firstName">{t("profile.firstName")}</Label>
+          <Label htmlFor="firstName" className="text-sm font-normal">
+            {t("profile.firstName")}
+            <span className="text-destructive">*</span>
+          </Label>
           <Input
             id="firstName"
+            placeholder={t("profile.firstNamePlaceholder")}
             aria-invalid={!!errors.firstName}
+            className="h-11 rounded-xl px-4"
             {...register("firstName")}
           />
           {errors.firstName && (
@@ -62,11 +69,17 @@ export function ProfileStep() {
             </p>
           )}
         </div>
+
         <div className="space-y-2">
-          <Label htmlFor="lastName">{t("profile.lastName")}</Label>
+          <Label htmlFor="lastName" className="text-sm font-normal">
+            {t("profile.lastName")}
+            <span className="text-destructive">*</span>
+          </Label>
           <Input
             id="lastName"
+            placeholder={t("profile.lastNamePlaceholder")}
             aria-invalid={!!errors.lastName}
+            className="h-11 rounded-xl px-4"
             {...register("lastName")}
           />
           {errors.lastName && (
@@ -78,11 +91,16 @@ export function ProfileStep() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="username">{t("profile.username")}</Label>
+        <Label htmlFor="username" className="text-sm font-normal">
+          {t("profile.username")}
+          <span className="text-destructive">*</span>
+        </Label>
         <Input
           id="username"
           autoComplete="username"
+          placeholder={t("profile.usernamePlaceholder")}
           aria-invalid={!!errors.username}
+          className="h-11 rounded-xl px-4"
           {...register("username")}
         />
         {errors.username && (
@@ -91,7 +109,9 @@ export function ProfileStep() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="phone">{t("profile.phone")}</Label>
+        <Label htmlFor="phone" className="text-sm font-normal">
+          {t("profile.phone")}
+        </Label>
         <div dir="ltr">
           <Controller
             control={control}
@@ -107,6 +127,7 @@ export function ProfileStep() {
                 value={field.value}
                 onChange={field.onChange}
                 aria-invalid={!!errors.phone}
+                className="h-11 rounded-xl px-4"
               />
             )}
           />
@@ -117,18 +138,28 @@ export function ProfileStep() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="gender">{t("profile.gender")}</Label>
+        <Label htmlFor="gender" className="text-sm font-normal">
+          {t("profile.gender")}
+        </Label>
         <Controller
           control={control}
           name="gender"
           render={({ field }) => (
-            <Select value={field.value} onValueChange={field.onChange}>
-              <SelectTrigger id="gender" aria-invalid={!!errors.gender}>
+            <Select
+              value={field.value ?? null}
+              onValueChange={(value) => field.onChange(value)}
+            >
+              {" "}
+              <SelectTrigger
+                id="gender"
+                aria-invalid={!!errors.gender}
+                className="h-11 w-full cursor-pointer rounded-xl px-5 py-5"
+              >
                 <SelectValue placeholder={t("profile.genderPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="male">{t("profile.male")}</SelectItem>
-                <SelectItem value="female">{t("profile.female")}</SelectItem>
+                <SelectItem value="MALE">{t("profile.male")}</SelectItem>
+                <SelectItem value="FEMALE">{t("profile.female")}</SelectItem>
               </SelectContent>
             </Select>
           )}
@@ -138,9 +169,16 @@ export function ProfileStep() {
         )}
       </div>
 
-      <Button type="submit" className="w-full">
-        {t("next")} →
+      <Button
+        type="submit"
+        variant="primary"
+        className="h-10.25 w-full gap-2.5 rounded-xl bg-(--maroon-600) px-4 py-3.5 font-medium"
+      >
+        {t("next")}
+        <ArrowRight className="size-4 rtl:rotate-180" />
       </Button>
+
+      <HelpFooter />
     </form>
   );
 }

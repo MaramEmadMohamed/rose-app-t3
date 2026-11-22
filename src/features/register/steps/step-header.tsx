@@ -9,10 +9,10 @@ type Props = {
 export function StepHeader({ title, subtitle, children }: Props) {
   return (
     <div className="space-y-1">
-      <h2 className="text-lg font-semibold">{title}</h2>
-      <p className="text-sm font-semibold text-[#7a1b1f]">{subtitle}</p>
-      {children && <div className="text-xs text-muted-foreground">{children}</div>}
-      <hr className="mt-3" />
+      <h1 className="text-2xl font-bold">{title}</h1>
+      <p className="text-md font-semibold text-primary">{subtitle}</p>
+      {children && <div className="text-xs">{children}</div>}
+      <hr className="mt-3 border-border" />
     </div>
   );
 }

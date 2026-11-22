@@ -9,7 +9,9 @@ export default async function Home({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <main className="flex flex-5 min-h-screen flex-col items-center justify-between p-24">
-    <RegisterPage/>
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <RegisterPage params={params} />
     </main>
+  );
 }

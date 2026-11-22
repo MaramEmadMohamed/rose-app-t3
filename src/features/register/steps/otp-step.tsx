@@ -1,4 +1,5 @@
 "use client";
+
 import { useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,11 +16,9 @@ import { createOtpSchema, OtpValues } from "../register.schema";
 import { useRegister } from "../register-context";
 import { useResendCountdown } from "../use-resend-countdown";
 import { StepHeader } from "../steps/step-header";
-import {
-  ApiError,
-  confirmEmailVerification,
-  sendEmailVerification,
-} from "../api/api";
+import { useConfirmEmailVerification } from "../hooks/use-confirm-email-verification";
+import { useSendEmailVerification } from "../hooks/use-send-email-verification";
+import { HelpFooter } from "../help-footer";
 
 export function OtpStep() {
   const t = useTranslations("register");
@@ -27,36 +26,42 @@ export function OtpStep() {
   const { secondsLeft, start } = useResendCountdown();
   const schema = useMemo(() => createOtpSchema(t), [t]);
 
+  const { mutateAsync: confirmEmail, isPending: isConfirming } =
+    useConfirmEmailVerification();
+  const { mutateAsync: resendEmail, isPending: isResending } =
+    useSendEmailVerification();
+
   const {
     control,
     handleSubmit,
     setError,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<OtpValues>({
     resolver: zodResolver(schema),
     defaultValues: { otp: "" },
   });
 
   async function onSubmit({ otp }: OtpValues) {
-    try {
-      await confirmEmailVerification(email, otp);
-      update({ step: "profile" });
-    } catch (e) {
-      if (e instanceof ApiError) setError("otp", { message: e.message });
-      else toast.error((e as Error).message);
+    const result = await confirmEmail({ email, otp });
+
+    if (!result.success) {
+      setError("otp", { message: result.message });
+      return;
     }
+    update({ step: "profile" });
   }
 
   async function resend() {
-    try {
-      await sendEmailVerification(email);
-      start();
-      reset();
-      toast.success(t("otp.resent"));
-    } catch (e) {
-      toast.error((e as Error).message);
+    const result = await resendEmail(email);
+
+    if (!result.success) {
+      toast.error(result.message);
+      return;
     }
+    start();
+    reset();
+    toast.success(t("otp.resent"));
   }
 
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
@@ -69,13 +74,14 @@ export function OtpStep() {
         <span dir="ltr" className="inline-block font-medium text-foreground">
           {email}
         </span>{" "}
-        <button
+        <Button
           type="button"
-          className="text-blue-600 underline"
+          variant="link"
+          className="h-auto cursor-pointer p-0 text-sm font-semibold"
           onClick={() => update({ step: "email" })}
         >
           {t("otp.edit")}
-        </button>
+        </Button>
       </StepHeader>
 
       <div className="flex flex-col items-center gap-2">
@@ -97,7 +103,7 @@ export function OtpStep() {
                   <InputOTPSlot
                     key={i}
                     index={i}
-                    className="size-11 rounded-md border first:rounded-md last:rounded-md"
+                    className="size-11 rounded-xl border first:rounded-xl last:rounded-xl"
                   />
                 ))}
               </InputOTPGroup>
@@ -109,7 +115,7 @@ export function OtpStep() {
         )}
       </div>
 
-      <div className="min-h-5 text-end text-xs">
+      <div className="flex min-h-5 justify-end text-xs">
         {secondsLeft > 0 ? (
           <p className="text-muted-foreground" aria-live="polite">
             {t("otp.resendIn")}{" "}
@@ -118,23 +124,28 @@ export function OtpStep() {
             </span>
           </p>
         ) : (
-          <button
+          <Button
             type="button"
+            variant="link"
+            className="h-auto cursor-pointer p-0 text-xs font-semibold"
             onClick={resend}
-            className="font-semibold text-[#7a1b1f] underline"
+            disabled={isResending}
           >
             {t("otp.resend")}
-          </button>
+          </Button>
         )}
       </div>
 
       <Button
         type="submit"
-        className="w-full bg-[#a4262c] hover:bg-[#8d1f25]"
-        disabled={isSubmitting}
+        variant="primary"
+        className="h-[41px] w-full gap-2.5 rounded-[10px] bg-(--maroon-600) px-4 py-3.5 font-medium"
+        disabled={isConfirming}
       >
-        {isSubmitting ? t("otp.verifying") : t("otp.verify")}
+        {isConfirming ? t("otp.verifying") : t("otp.verify")}
       </Button>
+
+      <HelpFooter />
     </form>
   );
 }
