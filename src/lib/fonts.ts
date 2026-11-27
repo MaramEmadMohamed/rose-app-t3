@@ -1,4 +1,5 @@
 import { Sarabun, Tajawal } from "next/font/google";
+import { Pinyon_Script } from "next/font/google";
 
 // English: Regular (400), Medium (500), Semibold (600), Bold (700)
 export const sarabun = Sarabun({
@@ -14,4 +15,11 @@ export const tajawal = Tajawal({
   weight: ["400", "500", "700", "800"],
   variable: "--font-tajawal",
   display: "swap",
+});
+
+
+export const pinyonScript = Pinyon_Script({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-script",
 });
